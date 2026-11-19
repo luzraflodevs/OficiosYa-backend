@@ -1,26 +1,46 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '../../prisma/prisma.service.js';
 import { CreateContactoDto } from './dto/create-contacto.dto.js';
 import { UpdateContactoDto } from './dto/update-contacto.dto.js';
 
 @Injectable()
 export class ContactosService {
+  constructor(private readonly prisma: PrismaService) {}
+
   create(createContactoDto: CreateContactoDto) {
-    return 'This action adds a new contacto';
+    return this.prisma.contacto.create({
+      data: createContactoDto,
+    });
   }
 
   findAll() {
-    return `This action returns all contactos`;
+    return this.prisma.contacto.findMany({
+      orderBy: { id: 'asc' },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} contacto`;
+  async findOne(id: number) {
+    const contacto = await this.prisma.contacto.findUnique({
+      where: { id },
+    });
+    if (!contacto) {
+      throw new NotFoundException(`No se encontró el contacto con id ${id}`);
+    }
+    return contacto;
   }
 
-  update(id: number, updateContactoDto: UpdateContactoDto) {
-    return `This action updates a #${id} contacto`;
+  async update(id: number, updateContactoDto: UpdateContactoDto) {
+    await this.findOne(id);
+    return this.prisma.contacto.update({
+      where: { id },
+      data: updateContactoDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} contacto`;
+  async remove(id: number) {
+    await this.findOne(id);
+    return this.prisma.contacto.delete({
+      where: { id },
+    });
   }
 }
