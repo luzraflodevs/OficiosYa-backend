@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
+import { PrismaModule } from '../../prisma/prisma.module.js';
 import { AuthModule } from '../auth/auth.module.js';
 import { UsuariosModule } from '../usuarios/usuarios.module.js';
 import { ProfesionalesModule } from '../profesionales/profesionales.module.js';
@@ -11,6 +12,7 @@ import { ResenasModule } from '../resenas/resenas.module.js';
 
 @Module({
   imports: [
+    PrismaModule,
     AuthModule,
     UsuariosModule,
     ProfesionalesModule,
