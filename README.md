@@ -5,8 +5,8 @@ API RESTful desarrollada con **NestJS**, **Prisma ORM** y **PostgreSQL** para la
 ## Equipo de Desarrollo
 
 * **González Raflo, Luz Priscila**
-* **Moschino Molina, Tobías**
 * **Monetti, Camila**
+* **Moschino Molina, Tobías**
 
 ## Stack Tecnológico
 
