@@ -1,132 +1,109 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# OficiosYa — Backend API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API RESTful desarrollada con **NestJS**, **Prisma ORM** y **PostgreSQL** para la plataforma **OficiosYa**, destinada a conectar usuarios que requieren servicios técnicos o del hogar con profesionales verificados por rubro y ubicación.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Equipo de Desarrollo
 
-## Description
+* **González Raflo, Luz Priscila**
+* **Moschino Molina, Tobías**
+* **Monetti, Camila**
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Stack Tecnológico
 
-## Project setup
+* **Framework:** NestJS (TypeScript)
+* **Base de Datos:** PostgreSQL
+* **ORM y Migraciones:** Prisma ORM
+* **Validación de Datos:** `class-validator` y `class-transformer`
+* **Pruebas de Endpoints:** Postman
 
-```bash
-$ npm install
+## Arquitectura y Módulos del Sistema
+
+El proyecto sigue una arquitectura modular por dominio, estandarizada al 100% en español tanto en el código fuente como en el esquema relacional de la base de datos:
+
+```text
+OficiosYa-backend/
+├── prisma/
+│   ├── migrations/        # Historial de migraciones SQL
+│   └── schema.prisma      # Modelado relacional de las 7 entidades
+├── src/
+│   ├── modules/
+│   │   ├── auth/          # Registro y gestión de credenciales
+│   │   ├── contactos/     # Consultas y mensajes de contacto
+│   │   ├── oficios/       # Catálogo de rubros y especialidades
+│   │   ├── profesionales/ # Perfiles de trabajadores y matrículas
+│   │   ├── resenas/       # Calificaciones y comentarios sobre servicios
+│   │   ├── servicios/     # Publicaciones de servicios ofrecidos
+│   │   └── usuarios/      # Gestión de clientes, profesionales y administradores
+│   ├── prisma/            # PrismaService y PrismaModule globales
+│   └── main.ts            # Punto de entrada y configuración de ValidationPipe
+└── .env.example           # Plantilla de variables de entorno
 ```
 
-## Compile and run the project
+### Entidades del Modelo de Datos
 
-```bash
-# development
-$ npm run start
+1. **`ubicaciones`**: Localidades, provincias y códigos postales de cobertura.
+2. **`usuarios`**: Cuentas registradas en la plataforma con roles (`CLIENTE`, `PROFESIONAL`, `ADMIN`).
+3. **`profesionales`**: Información extendida del prestador (descripción, matrícula, disponibilidad y ubicación).
+4. **`oficios`**: Categorías de oficios disponibles (ej. Electricidad, Plomería, Gasista, Carpintería).
+5. **`servicios`**: Servicios publicados por cada profesional asociados a un oficio y tarifa.
+6. **`resenas`**: Valoraciones (1 a 5) y comentarios realizados por usuarios sobre servicios contratados.
+7. **`contactos`**: Mensajes enviados a través del formulario de contacto de la plataforma.
 
-# watch mode
-$ npm run start:dev
+## Requisitos Previos
 
-# production mode
-$ npm run start:prod
-```
+* **Node.js** (v18 o superior)
+* **npm**
+* **PostgreSQL** (v14 o superior) en ejecución local
 
-## Run tests
+## Instalación y Configuración Local
 
-```bash
-# unit tests
-$ npm run test
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/luzraflodevs/OficiosYa-backend.git](https://github.com/luzraflodevs/OficiosYa-backend.git)
+   cd OficiosYa-backend
+   ```
 
-# e2e tests
-$ npm run test:e2e
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
 
-# test coverage
-$ npm run test:cov
-```
+3. **Configurar variables de entorno:**
+   Crear un archivo `.env` en la raíz del proyecto con los datos de conexión a tu instancia local de PostgreSQL:
+   ```env
+   DATABASE_URL="postgresql://USUARIO:CONTRASENA@localhost:5432/oficiosya_db?schema=public"
+   PORT=4000
+   ```
 
-## Deployment
+4. **Ejecutar migraciones y generar el cliente Prisma:**
+   ```bash
+   npx prisma migrate dev
+   npx prisma generate
+   ```
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+5. **Levantar el servidor en modo desarrollo:**
+   ```bash
+   npm run start:dev
+   ```
+   El servidor quedará disponible en `http://localhost:4000`.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Endpoints Principales
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+Todos los recursos cuentan con validación automática mediante DTOs (`ValidationPipe` global) y operaciones CRUD completas:
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+| Recurso | Base URL | Métodos Soportados |
+| :--- | :--- | :--- |
+| **Autenticación** | `/auth` | `GET`, `POST`, `PATCH`, `DELETE` |
+| **Usuarios** | `/usuarios` | `GET`, `POST`, `PATCH`, `DELETE` |
+| **Profesionales** | `/profesionales` | `GET`, `POST`, `PATCH`, `DELETE` |
+| **Oficios** | `/oficios` | `GET`, `POST`, `PATCH`, `DELETE` |
+| **Servicios** | `/servicios` | `GET`, `POST`, `PATCH`, `DELETE` |
+| **Reseñas** | `/resenas` | `GET`, `POST`, `PATCH`, `DELETE` |
+| **Contactos** | `/contactos` | `GET`, `POST`, `PATCH`, `DELETE` |
 
-## Observability
+## Flujo de Trabajo Git
 
-In production applications, observability is essential for understanding how your system behaves, detecting issues early, and maintaining reliable performance.
-
-[NestJS Observe](https://observe.nestjs.com) automatically instruments your NestJS application, giving you deep visibility into your system with minimal setup:
-
-- **Distributed tracing:** Follow requests across services and understand how they flow through your system.
-- **Waterfall analysis:** Visualize request execution and identify slow operations, bottlenecks, and unexpected delays.
-- **Performance analysis:** Analyze application performance in real time and quickly pinpoint areas that need optimization.
-- **Metrics:** Track key application and infrastructure metrics to understand system health and performance trends.
-- **Logging:** Centralize and correlate logs with traces and other telemetry to make debugging easier.
-- **Error tracking:** Detect errors quickly and investigate their root causes with the surrounding context.
-- **SLA monitoring:** Track service-level objectives and identify when your application is approaching or exceeding defined thresholds.
-- **Alarms and alerts:** Set up alerts for critical errors, performance degradation, SLA violations, and other anomalies so your team can react quickly.
-
-To add it to this project, run this and approve the code it prints at [observe.nestjs.com/link](https://observe.nestjs.com/link) - signing up for free if you have no account:
-
-```bash
-$ npx @nestjs/observe link
-```
-
-It installs `@nestjs/observe`, wires it into `AppModule` and `main.ts`, and writes the app key and secret into `.env`, which every `nest start` script (`start`, `start:dev`, `start:debug`) then loads. In production, set `OBSERVE_APP_KEY` and `OBSERVE_APP_SECRET` in the environment instead.
-
-Or do it by hand:
-
-```bash
-$ npm install @nestjs/observe
-```
-
-Then follow the [setup guide](https://docs.nestjs.com/observability/sdk) - it takes a single import and an app key.
-
-The free plan needs no payment details and covers 300,000 events a month. You can also browse the [live demo](https://www.observe-demo.nestjs.com/dashboard) first - the whole dashboard over a busy service's data, with nothing to install.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Auto-instrument your application with [NestJS Observe](https://observe.nestjs.com). Distributed tracing, metrics, and logging made easy. Error tracking and performance monitoring for your NestJS applications.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+* **`main`**: Rama principal de producción / entregas consolidadas.
+* **`dev`**: Rama de integración donde se mergean las funcionalidades y documentación aprobadas.
+* **`feature/*`**: Ramas destinadas al desarrollo de nuevos módulos, base de datos o funcionalidades.
+* **`docs/*`**: Ramas destinadas exclusivamente a la documentación del proyecto.
