@@ -46,6 +46,7 @@ OficiosYa-backend/
 └── tsconfig.json
 ```
 
+
 ### Descripción de Módulos
 * **`auth`**: Registro e inicio de sesión de usuarios con encriptación de contraseñas (`bcrypt`) y generación de tokens JWT.
 * **`prisma`**: Módulo y servicio global de conexión a PostgreSQL mediante Prisma ORM.
@@ -100,6 +101,7 @@ npm run start:prod
 
 ---
 
+
 ## Endpoints Principales
 
 | Módulo | Método | Endpoint | Descripción |
@@ -121,7 +123,9 @@ Importar el archivo `postman/collections/OficiosYa-backend.postman_collection.js
 
 ---
 
+
 ## Equipo de Desarrollo
+
 
 * **Luz Priscila González Raflo**
 * **Tobias Moschino Molina**
