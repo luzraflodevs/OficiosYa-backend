@@ -1,9 +1,14 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
 import { AuthService } from './auth.service.js';
 import { LoginAuthDto } from './dto/login-auth.dto.js';
 import { RegisterAuthDto } from './dto/register-auth.dto.js';
 
-// Este módulo solo usa el método POST: registrar un usuario e iniciar sesión.
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -14,6 +19,7 @@ export class AuthController {
   }
 
   @Post('login')
+  @HttpCode(HttpStatus.OK)
   login(@Body() loginAuthDto: LoginAuthDto) {
     return this.authService.login(loginAuthDto);
   }
