@@ -1,4 +1,5 @@
 import {
+  IsBoolean,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -23,4 +24,10 @@ export class CreateOficioDto {
     message: 'La descripción no puede superar los 1000 caracteres.',
   })
   descripcion?: string;
+
+  @IsOptional()
+  @IsBoolean({
+    message: 'El estado activo debe ser verdadero o falso (true o false).',
+  })
+  activo?: boolean;
 }

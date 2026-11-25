@@ -1,4 +1,5 @@
 import {
+  IsBoolean,
   IsInt,
   IsOptional,
   IsString,
@@ -8,8 +9,12 @@ import {
 } from 'class-validator';
 
 export class CreateResenaDto {
-  // Claves foráneas: se escriben en la clase, pero no se validan con decoradores.
+  @IsInt({ message: 'El id del servicio debe ser un número entero.' })
+  @Min(1, { message: 'El id del servicio debe ser mayor a 0.' })
   servicio_id: number;
+
+  @IsInt({ message: 'El id del usuario debe ser un número entero.' })
+  @Min(1, { message: 'El id del usuario debe ser mayor a 0.' })
   usuario_id: number;
 
   @IsInt({ message: 'La calificación debe ser un número entero.' })
@@ -23,4 +28,10 @@ export class CreateResenaDto {
     message: 'El comentario no puede superar los 1000 caracteres.',
   })
   comentario?: string;
+
+  @IsOptional()
+  @IsBoolean({
+    message: 'El estado activo debe ser verdadero o falso (true o false).',
+  })
+  activo?: boolean;
 }

@@ -1,6 +1,8 @@
 import {
+  IsBoolean,
   IsEmail,
   IsNotEmpty,
+  IsOptional,
   IsString,
   MaxLength,
   MinLength,
@@ -35,4 +37,10 @@ export class CreateContactoDto {
     message: 'El mensaje no puede superar los 3000 caracteres.',
   })
   mensaje: string;
+
+  @IsOptional()
+  @IsBoolean({
+    message: 'El estado activo debe ser verdadero o falso (true o false).',
+  })
+  activo?: boolean;
 }
