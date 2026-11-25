@@ -38,24 +38,30 @@ export type OficioMinAggregateOutputType = {
   id: number | null
   nombre: string | null
   descripcion: string | null
-  fecha_creacion: Date | null
-  fecha_actualizacion: Date | null
+  imagen: string | null
+  activo: boolean | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type OficioMaxAggregateOutputType = {
   id: number | null
   nombre: string | null
   descripcion: string | null
-  fecha_creacion: Date | null
-  fecha_actualizacion: Date | null
+  imagen: string | null
+  activo: boolean | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type OficioCountAggregateOutputType = {
   id: number
   nombre: number
   descripcion: number
-  fecha_creacion: number
-  fecha_actualizacion: number
+  imagen: number
+  activo: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -72,24 +78,30 @@ export type OficioMinAggregateInputType = {
   id?: true
   nombre?: true
   descripcion?: true
-  fecha_creacion?: true
-  fecha_actualizacion?: true
+  imagen?: true
+  activo?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type OficioMaxAggregateInputType = {
   id?: true
   nombre?: true
   descripcion?: true
-  fecha_creacion?: true
-  fecha_actualizacion?: true
+  imagen?: true
+  activo?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type OficioCountAggregateInputType = {
   id?: true
   nombre?: true
   descripcion?: true
-  fecha_creacion?: true
-  fecha_actualizacion?: true
+  imagen?: true
+  activo?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -182,9 +194,11 @@ export type OficioGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 export type OficioGroupByOutputType = {
   id: number
   nombre: string
-  descripcion: string | null
-  fecha_creacion: Date
-  fecha_actualizacion: Date
+  descripcion: string
+  imagen: string | null
+  activo: boolean
+  createdAt: Date
+  updatedAt: Date
   _count: OficioCountAggregateOutputType | null
   _avg: OficioAvgAggregateOutputType | null
   _sum: OficioSumAggregateOutputType | null
@@ -213,18 +227,22 @@ export type OficioWhereInput = {
   NOT?: Prisma.OficioWhereInput | Prisma.OficioWhereInput[]
   id?: Prisma.IntFilter<"Oficio"> | number
   nombre?: Prisma.StringFilter<"Oficio"> | string
-  descripcion?: Prisma.StringNullableFilter<"Oficio"> | string | null
-  fecha_creacion?: Prisma.DateTimeFilter<"Oficio"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"Oficio"> | Date | string
+  descripcion?: Prisma.StringFilter<"Oficio"> | string
+  imagen?: Prisma.StringNullableFilter<"Oficio"> | string | null
+  activo?: Prisma.BoolFilter<"Oficio"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Oficio"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Oficio"> | Date | string
   servicios?: Prisma.ServicioListRelationFilter
 }
 
 export type OficioOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
-  descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  descripcion?: Prisma.SortOrder
+  imagen?: Prisma.SortOrderInput | Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   servicios?: Prisma.ServicioOrderByRelationAggregateInput
 }
 
@@ -234,18 +252,22 @@ export type OficioWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.OficioWhereInput | Prisma.OficioWhereInput[]
   OR?: Prisma.OficioWhereInput[]
   NOT?: Prisma.OficioWhereInput | Prisma.OficioWhereInput[]
-  descripcion?: Prisma.StringNullableFilter<"Oficio"> | string | null
-  fecha_creacion?: Prisma.DateTimeFilter<"Oficio"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"Oficio"> | Date | string
+  descripcion?: Prisma.StringFilter<"Oficio"> | string
+  imagen?: Prisma.StringNullableFilter<"Oficio"> | string | null
+  activo?: Prisma.BoolFilter<"Oficio"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Oficio"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Oficio"> | Date | string
   servicios?: Prisma.ServicioListRelationFilter
 }, "id" | "nombre">
 
 export type OficioOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
-  descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  descripcion?: Prisma.SortOrder
+  imagen?: Prisma.SortOrderInput | Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.OficioCountOrderByAggregateInput
   _avg?: Prisma.OficioAvgOrderByAggregateInput
   _max?: Prisma.OficioMaxOrderByAggregateInput
@@ -259,74 +281,92 @@ export type OficioScalarWhereWithAggregatesInput = {
   NOT?: Prisma.OficioScalarWhereWithAggregatesInput | Prisma.OficioScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Oficio"> | number
   nombre?: Prisma.StringWithAggregatesFilter<"Oficio"> | string
-  descripcion?: Prisma.StringNullableWithAggregatesFilter<"Oficio"> | string | null
-  fecha_creacion?: Prisma.DateTimeWithAggregatesFilter<"Oficio"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeWithAggregatesFilter<"Oficio"> | Date | string
+  descripcion?: Prisma.StringWithAggregatesFilter<"Oficio"> | string
+  imagen?: Prisma.StringNullableWithAggregatesFilter<"Oficio"> | string | null
+  activo?: Prisma.BoolWithAggregatesFilter<"Oficio"> | boolean
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Oficio"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Oficio"> | Date | string
 }
 
 export type OficioCreateInput = {
   nombre: string
-  descripcion?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  imagen?: string | null
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   servicios?: Prisma.ServicioCreateNestedManyWithoutOficioInput
 }
 
 export type OficioUncheckedCreateInput = {
   id?: number
   nombre: string
-  descripcion?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  imagen?: string | null
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   servicios?: Prisma.ServicioUncheckedCreateNestedManyWithoutOficioInput
 }
 
 export type OficioUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   servicios?: Prisma.ServicioUpdateManyWithoutOficioNestedInput
 }
 
 export type OficioUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   servicios?: Prisma.ServicioUncheckedUpdateManyWithoutOficioNestedInput
 }
 
 export type OficioCreateManyInput = {
   id?: number
   nombre: string
-  descripcion?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  imagen?: string | null
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type OficioUpdateManyMutationInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OficioUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OficioCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  imagen?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type OficioAvgOrderByAggregateInput = {
@@ -337,16 +377,20 @@ export type OficioMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  imagen?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type OficioMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  imagen?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type OficioSumOrderByAggregateInput = {
@@ -374,17 +418,21 @@ export type OficioUpdateOneRequiredWithoutServiciosNestedInput = {
 
 export type OficioCreateWithoutServiciosInput = {
   nombre: string
-  descripcion?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  imagen?: string | null
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type OficioUncheckedCreateWithoutServiciosInput = {
   id?: number
   nombre: string
-  descripcion?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  imagen?: string | null
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type OficioCreateOrConnectWithoutServiciosInput = {
@@ -405,17 +453,21 @@ export type OficioUpdateToOneWithWhereWithoutServiciosInput = {
 
 export type OficioUpdateWithoutServiciosInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OficioUncheckedUpdateWithoutServiciosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -453,8 +505,10 @@ export type OficioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   id?: boolean
   nombre?: boolean
   descripcion?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  imagen?: boolean
+  activo?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   servicios?: boolean | Prisma.Oficio$serviciosArgs<ExtArgs>
   _count?: boolean | Prisma.OficioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["oficio"]>
@@ -463,27 +517,33 @@ export type OficioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   id?: boolean
   nombre?: boolean
   descripcion?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  imagen?: boolean
+  activo?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["oficio"]>
 
 export type OficioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre?: boolean
   descripcion?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  imagen?: boolean
+  activo?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["oficio"]>
 
 export type OficioSelectScalar = {
   id?: boolean
   nombre?: boolean
   descripcion?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  imagen?: boolean
+  activo?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type OficioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "descripcion" | "fecha_creacion" | "fecha_actualizacion", ExtArgs["result"]["oficio"]>
+export type OficioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "descripcion" | "imagen" | "activo" | "createdAt" | "updatedAt", ExtArgs["result"]["oficio"]>
 export type OficioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   servicios?: boolean | Prisma.Oficio$serviciosArgs<ExtArgs>
   _count?: boolean | Prisma.OficioCountOutputTypeDefaultArgs<ExtArgs>
@@ -499,9 +559,11 @@ export type $OficioPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     nombre: string
-    descripcion: string | null
-    fecha_creacion: Date
-    fecha_actualizacion: Date
+    descripcion: string
+    imagen: string | null
+    activo: boolean
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["oficio"]>
   composites: {}
 }
@@ -929,8 +991,10 @@ export interface OficioFieldRefs {
   readonly id: Prisma.FieldRef<"Oficio", 'Int'>
   readonly nombre: Prisma.FieldRef<"Oficio", 'String'>
   readonly descripcion: Prisma.FieldRef<"Oficio", 'String'>
-  readonly fecha_creacion: Prisma.FieldRef<"Oficio", 'DateTime'>
-  readonly fecha_actualizacion: Prisma.FieldRef<"Oficio", 'DateTime'>
+  readonly imagen: Prisma.FieldRef<"Oficio", 'String'>
+  readonly activo: Prisma.FieldRef<"Oficio", 'Boolean'>
+  readonly createdAt: Prisma.FieldRef<"Oficio", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Oficio", 'DateTime'>
 }
     
 

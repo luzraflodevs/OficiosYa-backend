@@ -1,107 +1,85 @@
 import {
-  BadRequestException,
+  ConflictException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { PrismaService } from '../../prisma/prisma.service.js';
-import { CreateUsuarioDto } from './dto/create-usuario.dto.js';
+import { PrismaService } from '../prisma/prisma.service.js';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto.js';
+
+// Campos que se devuelven del usuario. contrasena_hash NO está:
+// la contraseña nunca sale en las respuestas.
+const camposUsuario = {
+  id: true,
+  nombre: true,
+  apellido: true,
+  email: true,
+  telefono: true,
+  rol: true,
+  activo: true,
+  creado_en: true,
+  actualizado_en: true,
+};
 
 @Injectable()
 export class UsuariosService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createUsuarioDto: CreateUsuarioDto) {
-    const existe = await this.prisma.usuario.findUnique({
-      where: { correo: createUsuarioDto.correo },
-    });
-    if (existe) {
-      throw new BadRequestException('Ya existe un usuario con ese correo');
-    }
-
-    const { contrasena, ...resto } = createUsuarioDto;
-    return this.prisma.usuario.create({
-      data: {
-        ...resto,
-        contrasena_hash: contrasena,
-      },
-      select: {
-        id: true,
-        nombre: true,
-        apellido: true,
-        correo: true,
-        telefono: true,
-        rol: true,
-        fecha_creacion: true,
-        fecha_actualizacion: true,
-      },
-    });
-  }
-
   findAll() {
     return this.prisma.usuario.findMany({
+      where: { activo: true },
       orderBy: { id: 'asc' },
-      select: {
-        id: true,
-        nombre: true,
-        apellido: true,
-        correo: true,
-        telefono: true,
-        rol: true,
-        fecha_creacion: true,
-        fecha_actualizacion: true,
-      },
+      select: camposUsuario,
     });
   }
 
   async findOne(id: number) {
     const usuario = await this.prisma.usuario.findUnique({
-      where: { id },
-      select: {
-        id: true,
-        nombre: true,
-        apellido: true,
-        correo: true,
-        telefono: true,
-        rol: true,
-        fecha_creacion: true,
-        fecha_actualizacion: true,
-        profesional: true,
-      },
+      where: { id, activo: true },
+      select: camposUsuario,
     });
+
     if (!usuario) {
-      throw new NotFoundException(`No se encontró el usuario con id ${id}`);
+      throw new NotFoundException(`No existe un usuario con id ${id}.`);
     }
+
     return usuario;
   }
 
   async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
     await this.findOne(id);
-    const { contrasena, ...resto } = updateUsuarioDto;
+
+    if (updateUsuarioDto.email) {
+      await this.validarEmail(updateUsuarioDto.email, id);
+    }
 
     return this.prisma.usuario.update({
       where: { id },
-      data: {
-        ...resto,
-        ...(contrasena ? { contrasena_hash: contrasena } : {}),
-      },
-      select: {
-        id: true,
-        nombre: true,
-        apellido: true,
-        correo: true,
-        telefono: true,
-        rol: true,
-        fecha_creacion: true,
-        fecha_actualizacion: true,
-      },
+      data: updateUsuarioDto,
+      select: camposUsuario,
     });
   }
 
   async remove(id: number) {
     await this.findOne(id);
-    return this.prisma.usuario.delete({
+
+    // Borrado lógico: no se borra la fila, se marca como inactiva.
+    return this.prisma.usuario.update({
       where: { id },
+      data: { activo: false },
+      select: camposUsuario,
     });
+  }
+
+  private async validarEmail(email: string, usuarioId: number) {
+    const existente = await this.prisma.usuario.findUnique({
+      where: { email },
+      select: { id: true },
+    });
+
+    if (existente && existente.id !== usuarioId) {
+      throw new ConflictException(
+        'Ya existe una cuenta con ese correo electrónico.',
+      );
+    }
   }
 }

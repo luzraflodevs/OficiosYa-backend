@@ -1,27 +1,26 @@
 import {
   IsInt,
   IsOptional,
-  IsPositive,
   IsString,
   Max,
+  MaxLength,
   Min,
 } from 'class-validator';
 
 export class CreateResenaDto {
-  @IsInt({ message: 'El usuario_id debe ser un número entero' })
-  @IsPositive({ message: 'El usuario_id debe ser positivo' })
+  // Claves foráneas: se escriben en la clase, pero no se validan con decoradores.
+  servicio_id: number;
   usuario_id: number;
 
-  @IsInt({ message: 'El servicio_id debe ser un número entero' })
-  @IsPositive({ message: 'El servicio_id debe ser positivo' })
-  servicio_id: number;
-
-  @IsInt({ message: 'La calificación debe ser un número entero' })
-  @Min(1, { message: 'La calificación mínima es 1' })
-  @Max(5, { message: 'La calificación máxima es 5' })
+  @IsInt({ message: 'La calificación debe ser un número entero.' })
+  @Min(1, { message: 'La calificación mínima es 1.' })
+  @Max(5, { message: 'La calificación máxima es 5.' })
   calificacion: number;
 
   @IsOptional()
-  @IsString({ message: 'El comentario debe ser texto' })
+  @IsString({ message: 'El comentario debe ser un texto.' })
+  @MaxLength(1000, {
+    message: 'El comentario no puede superar los 1000 caracteres.',
+  })
   comentario?: string;
 }

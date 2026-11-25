@@ -28,92 +28,92 @@ export type AggregateResena = {
 
 export type ResenaAvgAggregateOutputType = {
   id: number | null
-  usuario_id: number | null
-  servicio_id: number | null
+  usuarioId: number | null
+  servicioId: number | null
   calificacion: number | null
 }
 
 export type ResenaSumAggregateOutputType = {
   id: number | null
-  usuario_id: number | null
-  servicio_id: number | null
+  usuarioId: number | null
+  servicioId: number | null
   calificacion: number | null
 }
 
 export type ResenaMinAggregateOutputType = {
   id: number | null
-  usuario_id: number | null
-  servicio_id: number | null
+  usuarioId: number | null
+  servicioId: number | null
   calificacion: number | null
   comentario: string | null
-  fecha_creacion: Date | null
-  fecha_actualizacion: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ResenaMaxAggregateOutputType = {
   id: number | null
-  usuario_id: number | null
-  servicio_id: number | null
+  usuarioId: number | null
+  servicioId: number | null
   calificacion: number | null
   comentario: string | null
-  fecha_creacion: Date | null
-  fecha_actualizacion: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ResenaCountAggregateOutputType = {
   id: number
-  usuario_id: number
-  servicio_id: number
+  usuarioId: number
+  servicioId: number
   calificacion: number
   comentario: number
-  fecha_creacion: number
-  fecha_actualizacion: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
 
 export type ResenaAvgAggregateInputType = {
   id?: true
-  usuario_id?: true
-  servicio_id?: true
+  usuarioId?: true
+  servicioId?: true
   calificacion?: true
 }
 
 export type ResenaSumAggregateInputType = {
   id?: true
-  usuario_id?: true
-  servicio_id?: true
+  usuarioId?: true
+  servicioId?: true
   calificacion?: true
 }
 
 export type ResenaMinAggregateInputType = {
   id?: true
-  usuario_id?: true
-  servicio_id?: true
+  usuarioId?: true
+  servicioId?: true
   calificacion?: true
   comentario?: true
-  fecha_creacion?: true
-  fecha_actualizacion?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ResenaMaxAggregateInputType = {
   id?: true
-  usuario_id?: true
-  servicio_id?: true
+  usuarioId?: true
+  servicioId?: true
   calificacion?: true
   comentario?: true
-  fecha_creacion?: true
-  fecha_actualizacion?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ResenaCountAggregateInputType = {
   id?: true
-  usuario_id?: true
-  servicio_id?: true
+  usuarioId?: true
+  servicioId?: true
   calificacion?: true
   comentario?: true
-  fecha_creacion?: true
-  fecha_actualizacion?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -205,12 +205,12 @@ export type ResenaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 
 export type ResenaGroupByOutputType = {
   id: number
-  usuario_id: number
-  servicio_id: number
+  usuarioId: number
+  servicioId: number
   calificacion: number
   comentario: string | null
-  fecha_creacion: Date
-  fecha_actualizacion: Date
+  createdAt: Date
+  updatedAt: Date
   _count: ResenaCountAggregateOutputType | null
   _avg: ResenaAvgAggregateOutputType | null
   _sum: ResenaSumAggregateOutputType | null
@@ -238,24 +238,24 @@ export type ResenaWhereInput = {
   OR?: Prisma.ResenaWhereInput[]
   NOT?: Prisma.ResenaWhereInput | Prisma.ResenaWhereInput[]
   id?: Prisma.IntFilter<"Resena"> | number
-  usuario_id?: Prisma.IntFilter<"Resena"> | number
-  servicio_id?: Prisma.IntFilter<"Resena"> | number
+  usuarioId?: Prisma.IntFilter<"Resena"> | number
+  servicioId?: Prisma.IntFilter<"Resena"> | number
   calificacion?: Prisma.IntFilter<"Resena"> | number
   comentario?: Prisma.StringNullableFilter<"Resena"> | string | null
-  fecha_creacion?: Prisma.DateTimeFilter<"Resena"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"Resena"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"Resena"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Resena"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   servicio?: Prisma.XOR<Prisma.ServicioScalarRelationFilter, Prisma.ServicioWhereInput>
 }
 
 export type ResenaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  usuario_id?: Prisma.SortOrder
-  servicio_id?: Prisma.SortOrder
+  usuarioId?: Prisma.SortOrder
+  servicioId?: Prisma.SortOrder
   calificacion?: Prisma.SortOrder
   comentario?: Prisma.SortOrderInput | Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   usuario?: Prisma.UsuarioOrderByWithRelationInput
   servicio?: Prisma.ServicioOrderByWithRelationInput
 }
@@ -265,24 +265,24 @@ export type ResenaWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ResenaWhereInput | Prisma.ResenaWhereInput[]
   OR?: Prisma.ResenaWhereInput[]
   NOT?: Prisma.ResenaWhereInput | Prisma.ResenaWhereInput[]
-  usuario_id?: Prisma.IntFilter<"Resena"> | number
-  servicio_id?: Prisma.IntFilter<"Resena"> | number
+  usuarioId?: Prisma.IntFilter<"Resena"> | number
+  servicioId?: Prisma.IntFilter<"Resena"> | number
   calificacion?: Prisma.IntFilter<"Resena"> | number
   comentario?: Prisma.StringNullableFilter<"Resena"> | string | null
-  fecha_creacion?: Prisma.DateTimeFilter<"Resena"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"Resena"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"Resena"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Resena"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   servicio?: Prisma.XOR<Prisma.ServicioScalarRelationFilter, Prisma.ServicioWhereInput>
 }, "id">
 
 export type ResenaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  usuario_id?: Prisma.SortOrder
-  servicio_id?: Prisma.SortOrder
+  usuarioId?: Prisma.SortOrder
+  servicioId?: Prisma.SortOrder
   calificacion?: Prisma.SortOrder
   comentario?: Prisma.SortOrderInput | Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ResenaCountOrderByAggregateInput
   _avg?: Prisma.ResenaAvgOrderByAggregateInput
   _max?: Prisma.ResenaMaxOrderByAggregateInput
@@ -295,77 +295,77 @@ export type ResenaScalarWhereWithAggregatesInput = {
   OR?: Prisma.ResenaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ResenaScalarWhereWithAggregatesInput | Prisma.ResenaScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Resena"> | number
-  usuario_id?: Prisma.IntWithAggregatesFilter<"Resena"> | number
-  servicio_id?: Prisma.IntWithAggregatesFilter<"Resena"> | number
+  usuarioId?: Prisma.IntWithAggregatesFilter<"Resena"> | number
+  servicioId?: Prisma.IntWithAggregatesFilter<"Resena"> | number
   calificacion?: Prisma.IntWithAggregatesFilter<"Resena"> | number
   comentario?: Prisma.StringNullableWithAggregatesFilter<"Resena"> | string | null
-  fecha_creacion?: Prisma.DateTimeWithAggregatesFilter<"Resena"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeWithAggregatesFilter<"Resena"> | Date | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Resena"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Resena"> | Date | string
 }
 
 export type ResenaCreateInput = {
   calificacion: number
   comentario?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutResenasInput
   servicio: Prisma.ServicioCreateNestedOneWithoutResenasInput
 }
 
 export type ResenaUncheckedCreateInput = {
   id?: number
-  usuario_id: number
-  servicio_id: number
+  usuarioId: number
+  servicioId: number
   calificacion: number
   comentario?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ResenaUpdateInput = {
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutResenasNestedInput
   servicio?: Prisma.ServicioUpdateOneRequiredWithoutResenasNestedInput
 }
 
 export type ResenaUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  servicioId?: Prisma.IntFieldUpdateOperationsInput | number
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ResenaCreateManyInput = {
   id?: number
-  usuario_id: number
-  servicio_id: number
+  usuarioId: number
+  servicioId: number
   calificacion: number
   comentario?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ResenaUpdateManyMutationInput = {
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ResenaUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  servicioId?: Prisma.IntFieldUpdateOperationsInput | number
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ResenaListRelationFilter = {
@@ -380,45 +380,45 @@ export type ResenaOrderByRelationAggregateInput = {
 
 export type ResenaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuario_id?: Prisma.SortOrder
-  servicio_id?: Prisma.SortOrder
+  usuarioId?: Prisma.SortOrder
+  servicioId?: Prisma.SortOrder
   calificacion?: Prisma.SortOrder
   comentario?: Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ResenaAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuario_id?: Prisma.SortOrder
-  servicio_id?: Prisma.SortOrder
+  usuarioId?: Prisma.SortOrder
+  servicioId?: Prisma.SortOrder
   calificacion?: Prisma.SortOrder
 }
 
 export type ResenaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuario_id?: Prisma.SortOrder
-  servicio_id?: Prisma.SortOrder
+  usuarioId?: Prisma.SortOrder
+  servicioId?: Prisma.SortOrder
   calificacion?: Prisma.SortOrder
   comentario?: Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ResenaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuario_id?: Prisma.SortOrder
-  servicio_id?: Prisma.SortOrder
+  usuarioId?: Prisma.SortOrder
+  servicioId?: Prisma.SortOrder
   calificacion?: Prisma.SortOrder
   comentario?: Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ResenaSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuario_id?: Prisma.SortOrder
-  servicio_id?: Prisma.SortOrder
+  usuarioId?: Prisma.SortOrder
+  servicioId?: Prisma.SortOrder
   calificacion?: Prisma.SortOrder
 }
 
@@ -509,18 +509,18 @@ export type ResenaUncheckedUpdateManyWithoutServicioNestedInput = {
 export type ResenaCreateWithoutUsuarioInput = {
   calificacion: number
   comentario?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   servicio: Prisma.ServicioCreateNestedOneWithoutResenasInput
 }
 
 export type ResenaUncheckedCreateWithoutUsuarioInput = {
   id?: number
-  servicio_id: number
+  servicioId: number
   calificacion: number
   comentario?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ResenaCreateOrConnectWithoutUsuarioInput = {
@@ -554,29 +554,29 @@ export type ResenaScalarWhereInput = {
   OR?: Prisma.ResenaScalarWhereInput[]
   NOT?: Prisma.ResenaScalarWhereInput | Prisma.ResenaScalarWhereInput[]
   id?: Prisma.IntFilter<"Resena"> | number
-  usuario_id?: Prisma.IntFilter<"Resena"> | number
-  servicio_id?: Prisma.IntFilter<"Resena"> | number
+  usuarioId?: Prisma.IntFilter<"Resena"> | number
+  servicioId?: Prisma.IntFilter<"Resena"> | number
   calificacion?: Prisma.IntFilter<"Resena"> | number
   comentario?: Prisma.StringNullableFilter<"Resena"> | string | null
-  fecha_creacion?: Prisma.DateTimeFilter<"Resena"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"Resena"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"Resena"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Resena"> | Date | string
 }
 
 export type ResenaCreateWithoutServicioInput = {
   calificacion: number
   comentario?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutResenasInput
 }
 
 export type ResenaUncheckedCreateWithoutServicioInput = {
   id?: number
-  usuario_id: number
+  usuarioId: number
   calificacion: number
   comentario?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ResenaCreateOrConnectWithoutServicioInput = {
@@ -607,123 +607,123 @@ export type ResenaUpdateManyWithWhereWithoutServicioInput = {
 
 export type ResenaCreateManyUsuarioInput = {
   id?: number
-  servicio_id: number
+  servicioId: number
   calificacion: number
   comentario?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ResenaUpdateWithoutUsuarioInput = {
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   servicio?: Prisma.ServicioUpdateOneRequiredWithoutResenasNestedInput
 }
 
 export type ResenaUncheckedUpdateWithoutUsuarioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  servicioId?: Prisma.IntFieldUpdateOperationsInput | number
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ResenaUncheckedUpdateManyWithoutUsuarioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  servicioId?: Prisma.IntFieldUpdateOperationsInput | number
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ResenaCreateManyServicioInput = {
   id?: number
-  usuario_id: number
+  usuarioId: number
   calificacion: number
   comentario?: string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ResenaUpdateWithoutServicioInput = {
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutResenasNestedInput
 }
 
 export type ResenaUncheckedUpdateWithoutServicioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
+  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ResenaUncheckedUpdateManyWithoutServicioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
+  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
   calificacion?: Prisma.IntFieldUpdateOperationsInput | number
   comentario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
 
 export type ResenaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  usuario_id?: boolean
-  servicio_id?: boolean
+  usuarioId?: boolean
+  servicioId?: boolean
   calificacion?: boolean
   comentario?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   servicio?: boolean | Prisma.ServicioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["resena"]>
 
 export type ResenaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  usuario_id?: boolean
-  servicio_id?: boolean
+  usuarioId?: boolean
+  servicioId?: boolean
   calificacion?: boolean
   comentario?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   servicio?: boolean | Prisma.ServicioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["resena"]>
 
 export type ResenaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  usuario_id?: boolean
-  servicio_id?: boolean
+  usuarioId?: boolean
+  servicioId?: boolean
   calificacion?: boolean
   comentario?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   servicio?: boolean | Prisma.ServicioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["resena"]>
 
 export type ResenaSelectScalar = {
   id?: boolean
-  usuario_id?: boolean
-  servicio_id?: boolean
+  usuarioId?: boolean
+  servicioId?: boolean
   calificacion?: boolean
   comentario?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ResenaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "usuario_id" | "servicio_id" | "calificacion" | "comentario" | "fecha_creacion" | "fecha_actualizacion", ExtArgs["result"]["resena"]>
+export type ResenaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "usuarioId" | "servicioId" | "calificacion" | "comentario" | "createdAt" | "updatedAt", ExtArgs["result"]["resena"]>
 export type ResenaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   servicio?: boolean | Prisma.ServicioDefaultArgs<ExtArgs>
@@ -745,12 +745,12 @@ export type $ResenaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    usuario_id: number
-    servicio_id: number
+    usuarioId: number
+    servicioId: number
     calificacion: number
     comentario: string | null
-    fecha_creacion: Date
-    fecha_actualizacion: Date
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["resena"]>
   composites: {}
 }
@@ -1177,12 +1177,12 @@ export interface Prisma__ResenaClient<T, Null = never, ExtArgs extends runtime.T
  */
 export interface ResenaFieldRefs {
   readonly id: Prisma.FieldRef<"Resena", 'Int'>
-  readonly usuario_id: Prisma.FieldRef<"Resena", 'Int'>
-  readonly servicio_id: Prisma.FieldRef<"Resena", 'Int'>
+  readonly usuarioId: Prisma.FieldRef<"Resena", 'Int'>
+  readonly servicioId: Prisma.FieldRef<"Resena", 'Int'>
   readonly calificacion: Prisma.FieldRef<"Resena", 'Int'>
   readonly comentario: Prisma.FieldRef<"Resena", 'String'>
-  readonly fecha_creacion: Prisma.FieldRef<"Resena", 'DateTime'>
-  readonly fecha_actualizacion: Prisma.FieldRef<"Resena", 'DateTime'>
+  readonly createdAt: Prisma.FieldRef<"Resena", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Resena", 'DateTime'>
 }
     
 

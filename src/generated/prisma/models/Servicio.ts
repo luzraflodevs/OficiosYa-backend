@@ -28,98 +28,104 @@ export type AggregateServicio = {
 
 export type ServicioAvgAggregateOutputType = {
   id: number | null
-  profesional_id: number | null
-  oficio_id: number | null
-  precio_estimado: runtime.Decimal | null
+  profesionalId: number | null
+  oficioId: number | null
+  precioEstimado: runtime.Decimal | null
 }
 
 export type ServicioSumAggregateOutputType = {
   id: number | null
-  profesional_id: number | null
-  oficio_id: number | null
-  precio_estimado: runtime.Decimal | null
+  profesionalId: number | null
+  oficioId: number | null
+  precioEstimado: runtime.Decimal | null
 }
 
 export type ServicioMinAggregateOutputType = {
   id: number | null
-  profesional_id: number | null
-  oficio_id: number | null
+  profesionalId: number | null
+  oficioId: number | null
   titulo: string | null
   descripcion: string | null
-  precio_estimado: runtime.Decimal | null
-  fecha_creacion: Date | null
-  fecha_actualizacion: Date | null
+  precioEstimado: runtime.Decimal | null
+  disponible: boolean | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ServicioMaxAggregateOutputType = {
   id: number | null
-  profesional_id: number | null
-  oficio_id: number | null
+  profesionalId: number | null
+  oficioId: number | null
   titulo: string | null
   descripcion: string | null
-  precio_estimado: runtime.Decimal | null
-  fecha_creacion: Date | null
-  fecha_actualizacion: Date | null
+  precioEstimado: runtime.Decimal | null
+  disponible: boolean | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ServicioCountAggregateOutputType = {
   id: number
-  profesional_id: number
-  oficio_id: number
+  profesionalId: number
+  oficioId: number
   titulo: number
   descripcion: number
-  precio_estimado: number
-  fecha_creacion: number
-  fecha_actualizacion: number
+  precioEstimado: number
+  disponible: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
 
 export type ServicioAvgAggregateInputType = {
   id?: true
-  profesional_id?: true
-  oficio_id?: true
-  precio_estimado?: true
+  profesionalId?: true
+  oficioId?: true
+  precioEstimado?: true
 }
 
 export type ServicioSumAggregateInputType = {
   id?: true
-  profesional_id?: true
-  oficio_id?: true
-  precio_estimado?: true
+  profesionalId?: true
+  oficioId?: true
+  precioEstimado?: true
 }
 
 export type ServicioMinAggregateInputType = {
   id?: true
-  profesional_id?: true
-  oficio_id?: true
+  profesionalId?: true
+  oficioId?: true
   titulo?: true
   descripcion?: true
-  precio_estimado?: true
-  fecha_creacion?: true
-  fecha_actualizacion?: true
+  precioEstimado?: true
+  disponible?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ServicioMaxAggregateInputType = {
   id?: true
-  profesional_id?: true
-  oficio_id?: true
+  profesionalId?: true
+  oficioId?: true
   titulo?: true
   descripcion?: true
-  precio_estimado?: true
-  fecha_creacion?: true
-  fecha_actualizacion?: true
+  precioEstimado?: true
+  disponible?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ServicioCountAggregateInputType = {
   id?: true
-  profesional_id?: true
-  oficio_id?: true
+  profesionalId?: true
+  oficioId?: true
   titulo?: true
   descripcion?: true
-  precio_estimado?: true
-  fecha_creacion?: true
-  fecha_actualizacion?: true
+  precioEstimado?: true
+  disponible?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -211,13 +217,14 @@ export type ServicioGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type ServicioGroupByOutputType = {
   id: number
-  profesional_id: number
-  oficio_id: number
+  profesionalId: number
+  oficioId: number
   titulo: string
-  descripcion: string | null
-  precio_estimado: runtime.Decimal | null
-  fecha_creacion: Date
-  fecha_actualizacion: Date
+  descripcion: string
+  precioEstimado: runtime.Decimal | null
+  disponible: boolean
+  createdAt: Date
+  updatedAt: Date
   _count: ServicioCountAggregateOutputType | null
   _avg: ServicioAvgAggregateOutputType | null
   _sum: ServicioSumAggregateOutputType | null
@@ -245,13 +252,14 @@ export type ServicioWhereInput = {
   OR?: Prisma.ServicioWhereInput[]
   NOT?: Prisma.ServicioWhereInput | Prisma.ServicioWhereInput[]
   id?: Prisma.IntFilter<"Servicio"> | number
-  profesional_id?: Prisma.IntFilter<"Servicio"> | number
-  oficio_id?: Prisma.IntFilter<"Servicio"> | number
+  profesionalId?: Prisma.IntFilter<"Servicio"> | number
+  oficioId?: Prisma.IntFilter<"Servicio"> | number
   titulo?: Prisma.StringFilter<"Servicio"> | string
-  descripcion?: Prisma.StringNullableFilter<"Servicio"> | string | null
-  precio_estimado?: Prisma.DecimalNullableFilter<"Servicio"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFilter<"Servicio"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"Servicio"> | Date | string
+  descripcion?: Prisma.StringFilter<"Servicio"> | string
+  precioEstimado?: Prisma.DecimalNullableFilter<"Servicio"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFilter<"Servicio"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Servicio"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Servicio"> | Date | string
   profesional?: Prisma.XOR<Prisma.ProfesionalScalarRelationFilter, Prisma.ProfesionalWhereInput>
   oficio?: Prisma.XOR<Prisma.OficioScalarRelationFilter, Prisma.OficioWhereInput>
   resenas?: Prisma.ResenaListRelationFilter
@@ -259,13 +267,14 @@ export type ServicioWhereInput = {
 
 export type ServicioOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  profesional_id?: Prisma.SortOrder
-  oficio_id?: Prisma.SortOrder
+  profesionalId?: Prisma.SortOrder
+  oficioId?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
-  descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
-  precio_estimado?: Prisma.SortOrderInput | Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  descripcion?: Prisma.SortOrder
+  precioEstimado?: Prisma.SortOrderInput | Prisma.SortOrder
+  disponible?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   profesional?: Prisma.ProfesionalOrderByWithRelationInput
   oficio?: Prisma.OficioOrderByWithRelationInput
   resenas?: Prisma.ResenaOrderByRelationAggregateInput
@@ -276,13 +285,14 @@ export type ServicioWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ServicioWhereInput | Prisma.ServicioWhereInput[]
   OR?: Prisma.ServicioWhereInput[]
   NOT?: Prisma.ServicioWhereInput | Prisma.ServicioWhereInput[]
-  profesional_id?: Prisma.IntFilter<"Servicio"> | number
-  oficio_id?: Prisma.IntFilter<"Servicio"> | number
+  profesionalId?: Prisma.IntFilter<"Servicio"> | number
+  oficioId?: Prisma.IntFilter<"Servicio"> | number
   titulo?: Prisma.StringFilter<"Servicio"> | string
-  descripcion?: Prisma.StringNullableFilter<"Servicio"> | string | null
-  precio_estimado?: Prisma.DecimalNullableFilter<"Servicio"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFilter<"Servicio"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"Servicio"> | Date | string
+  descripcion?: Prisma.StringFilter<"Servicio"> | string
+  precioEstimado?: Prisma.DecimalNullableFilter<"Servicio"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFilter<"Servicio"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Servicio"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Servicio"> | Date | string
   profesional?: Prisma.XOR<Prisma.ProfesionalScalarRelationFilter, Prisma.ProfesionalWhereInput>
   oficio?: Prisma.XOR<Prisma.OficioScalarRelationFilter, Prisma.OficioWhereInput>
   resenas?: Prisma.ResenaListRelationFilter
@@ -290,13 +300,14 @@ export type ServicioWhereUniqueInput = Prisma.AtLeast<{
 
 export type ServicioOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  profesional_id?: Prisma.SortOrder
-  oficio_id?: Prisma.SortOrder
+  profesionalId?: Prisma.SortOrder
+  oficioId?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
-  descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
-  precio_estimado?: Prisma.SortOrderInput | Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  descripcion?: Prisma.SortOrder
+  precioEstimado?: Prisma.SortOrderInput | Prisma.SortOrder
+  disponible?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ServicioCountOrderByAggregateInput
   _avg?: Prisma.ServicioAvgOrderByAggregateInput
   _max?: Prisma.ServicioMaxOrderByAggregateInput
@@ -309,21 +320,23 @@ export type ServicioScalarWhereWithAggregatesInput = {
   OR?: Prisma.ServicioScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ServicioScalarWhereWithAggregatesInput | Prisma.ServicioScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Servicio"> | number
-  profesional_id?: Prisma.IntWithAggregatesFilter<"Servicio"> | number
-  oficio_id?: Prisma.IntWithAggregatesFilter<"Servicio"> | number
+  profesionalId?: Prisma.IntWithAggregatesFilter<"Servicio"> | number
+  oficioId?: Prisma.IntWithAggregatesFilter<"Servicio"> | number
   titulo?: Prisma.StringWithAggregatesFilter<"Servicio"> | string
-  descripcion?: Prisma.StringNullableWithAggregatesFilter<"Servicio"> | string | null
-  precio_estimado?: Prisma.DecimalNullableWithAggregatesFilter<"Servicio"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeWithAggregatesFilter<"Servicio"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeWithAggregatesFilter<"Servicio"> | Date | string
+  descripcion?: Prisma.StringWithAggregatesFilter<"Servicio"> | string
+  precioEstimado?: Prisma.DecimalNullableWithAggregatesFilter<"Servicio"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolWithAggregatesFilter<"Servicio"> | boolean
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Servicio"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Servicio"> | Date | string
 }
 
 export type ServicioCreateInput = {
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   profesional: Prisma.ProfesionalCreateNestedOneWithoutServiciosInput
   oficio: Prisma.OficioCreateNestedOneWithoutServiciosInput
   resenas?: Prisma.ResenaCreateNestedManyWithoutServicioInput
@@ -331,22 +344,24 @@ export type ServicioCreateInput = {
 
 export type ServicioUncheckedCreateInput = {
   id?: number
-  profesional_id: number
-  oficio_id: number
+  profesionalId: number
+  oficioId: number
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   resenas?: Prisma.ResenaUncheckedCreateNestedManyWithoutServicioInput
 }
 
 export type ServicioUpdateInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profesional?: Prisma.ProfesionalUpdateOneRequiredWithoutServiciosNestedInput
   oficio?: Prisma.OficioUpdateOneRequiredWithoutServiciosNestedInput
   resenas?: Prisma.ResenaUpdateManyWithoutServicioNestedInput
@@ -354,44 +369,48 @@ export type ServicioUpdateInput = {
 
 export type ServicioUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  profesional_id?: Prisma.IntFieldUpdateOperationsInput | number
-  oficio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  profesionalId?: Prisma.IntFieldUpdateOperationsInput | number
+  oficioId?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resenas?: Prisma.ResenaUncheckedUpdateManyWithoutServicioNestedInput
 }
 
 export type ServicioCreateManyInput = {
   id?: number
-  profesional_id: number
-  oficio_id: number
+  profesionalId: number
+  oficioId: number
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ServicioUpdateManyMutationInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServicioUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  profesional_id?: Prisma.IntFieldUpdateOperationsInput | number
-  oficio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  profesionalId?: Prisma.IntFieldUpdateOperationsInput | number
+  oficioId?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServicioListRelationFilter = {
@@ -406,49 +425,52 @@ export type ServicioOrderByRelationAggregateInput = {
 
 export type ServicioCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  profesional_id?: Prisma.SortOrder
-  oficio_id?: Prisma.SortOrder
+  profesionalId?: Prisma.SortOrder
+  oficioId?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
-  precio_estimado?: Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  precioEstimado?: Prisma.SortOrder
+  disponible?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ServicioAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  profesional_id?: Prisma.SortOrder
-  oficio_id?: Prisma.SortOrder
-  precio_estimado?: Prisma.SortOrder
+  profesionalId?: Prisma.SortOrder
+  oficioId?: Prisma.SortOrder
+  precioEstimado?: Prisma.SortOrder
 }
 
 export type ServicioMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  profesional_id?: Prisma.SortOrder
-  oficio_id?: Prisma.SortOrder
+  profesionalId?: Prisma.SortOrder
+  oficioId?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
-  precio_estimado?: Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  precioEstimado?: Prisma.SortOrder
+  disponible?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ServicioMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  profesional_id?: Prisma.SortOrder
-  oficio_id?: Prisma.SortOrder
+  profesionalId?: Prisma.SortOrder
+  oficioId?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
-  precio_estimado?: Prisma.SortOrder
-  fecha_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  precioEstimado?: Prisma.SortOrder
+  disponible?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ServicioSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  profesional_id?: Prisma.SortOrder
-  oficio_id?: Prisma.SortOrder
-  precio_estimado?: Prisma.SortOrder
+  profesionalId?: Prisma.SortOrder
+  oficioId?: Prisma.SortOrder
+  precioEstimado?: Prisma.SortOrder
 }
 
 export type ServicioScalarRelationFilter = {
@@ -564,22 +586,24 @@ export type ServicioUpdateOneRequiredWithoutResenasNestedInput = {
 
 export type ServicioCreateWithoutProfesionalInput = {
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   oficio: Prisma.OficioCreateNestedOneWithoutServiciosInput
   resenas?: Prisma.ResenaCreateNestedManyWithoutServicioInput
 }
 
 export type ServicioUncheckedCreateWithoutProfesionalInput = {
   id?: number
-  oficio_id: number
+  oficioId: number
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   resenas?: Prisma.ResenaUncheckedCreateNestedManyWithoutServicioInput
 }
 
@@ -614,33 +638,36 @@ export type ServicioScalarWhereInput = {
   OR?: Prisma.ServicioScalarWhereInput[]
   NOT?: Prisma.ServicioScalarWhereInput | Prisma.ServicioScalarWhereInput[]
   id?: Prisma.IntFilter<"Servicio"> | number
-  profesional_id?: Prisma.IntFilter<"Servicio"> | number
-  oficio_id?: Prisma.IntFilter<"Servicio"> | number
+  profesionalId?: Prisma.IntFilter<"Servicio"> | number
+  oficioId?: Prisma.IntFilter<"Servicio"> | number
   titulo?: Prisma.StringFilter<"Servicio"> | string
-  descripcion?: Prisma.StringNullableFilter<"Servicio"> | string | null
-  precio_estimado?: Prisma.DecimalNullableFilter<"Servicio"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFilter<"Servicio"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"Servicio"> | Date | string
+  descripcion?: Prisma.StringFilter<"Servicio"> | string
+  precioEstimado?: Prisma.DecimalNullableFilter<"Servicio"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFilter<"Servicio"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Servicio"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Servicio"> | Date | string
 }
 
 export type ServicioCreateWithoutOficioInput = {
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   profesional: Prisma.ProfesionalCreateNestedOneWithoutServiciosInput
   resenas?: Prisma.ResenaCreateNestedManyWithoutServicioInput
 }
 
 export type ServicioUncheckedCreateWithoutOficioInput = {
   id?: number
-  profesional_id: number
+  profesionalId: number
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   resenas?: Prisma.ResenaUncheckedCreateNestedManyWithoutServicioInput
 }
 
@@ -672,23 +699,25 @@ export type ServicioUpdateManyWithWhereWithoutOficioInput = {
 
 export type ServicioCreateWithoutResenasInput = {
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   profesional: Prisma.ProfesionalCreateNestedOneWithoutServiciosInput
   oficio: Prisma.OficioCreateNestedOneWithoutServiciosInput
 }
 
 export type ServicioUncheckedCreateWithoutResenasInput = {
   id?: number
-  profesional_id: number
-  oficio_id: number
+  profesionalId: number
+  oficioId: number
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ServicioCreateOrConnectWithoutResenasInput = {
@@ -709,105 +738,115 @@ export type ServicioUpdateToOneWithWhereWithoutResenasInput = {
 
 export type ServicioUpdateWithoutResenasInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profesional?: Prisma.ProfesionalUpdateOneRequiredWithoutServiciosNestedInput
   oficio?: Prisma.OficioUpdateOneRequiredWithoutServiciosNestedInput
 }
 
 export type ServicioUncheckedUpdateWithoutResenasInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  profesional_id?: Prisma.IntFieldUpdateOperationsInput | number
-  oficio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  profesionalId?: Prisma.IntFieldUpdateOperationsInput | number
+  oficioId?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServicioCreateManyProfesionalInput = {
   id?: number
-  oficio_id: number
+  oficioId: number
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ServicioUpdateWithoutProfesionalInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   oficio?: Prisma.OficioUpdateOneRequiredWithoutServiciosNestedInput
   resenas?: Prisma.ResenaUpdateManyWithoutServicioNestedInput
 }
 
 export type ServicioUncheckedUpdateWithoutProfesionalInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  oficio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  oficioId?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resenas?: Prisma.ResenaUncheckedUpdateManyWithoutServicioNestedInput
 }
 
 export type ServicioUncheckedUpdateManyWithoutProfesionalInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  oficio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  oficioId?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServicioCreateManyOficioInput = {
   id?: number
-  profesional_id: number
+  profesionalId: number
   titulo: string
-  descripcion?: string | null
-  precio_estimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  descripcion: string
+  precioEstimado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ServicioUpdateWithoutOficioInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profesional?: Prisma.ProfesionalUpdateOneRequiredWithoutServiciosNestedInput
   resenas?: Prisma.ResenaUpdateManyWithoutServicioNestedInput
 }
 
 export type ServicioUncheckedUpdateWithoutOficioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  profesional_id?: Prisma.IntFieldUpdateOperationsInput | number
+  profesionalId?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resenas?: Prisma.ResenaUncheckedUpdateManyWithoutServicioNestedInput
 }
 
 export type ServicioUncheckedUpdateManyWithoutOficioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  profesional_id?: Prisma.IntFieldUpdateOperationsInput | number
+  profesionalId?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
-  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  precio_estimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  precioEstimado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  disponible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -843,13 +882,14 @@ export type ServicioCountOutputTypeCountResenasArgs<ExtArgs extends runtime.Type
 
 export type ServicioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  profesional_id?: boolean
-  oficio_id?: boolean
+  profesionalId?: boolean
+  oficioId?: boolean
   titulo?: boolean
   descripcion?: boolean
-  precio_estimado?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  precioEstimado?: boolean
+  disponible?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   profesional?: boolean | Prisma.ProfesionalDefaultArgs<ExtArgs>
   oficio?: boolean | Prisma.OficioDefaultArgs<ExtArgs>
   resenas?: boolean | Prisma.Servicio$resenasArgs<ExtArgs>
@@ -858,42 +898,45 @@ export type ServicioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type ServicioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  profesional_id?: boolean
-  oficio_id?: boolean
+  profesionalId?: boolean
+  oficioId?: boolean
   titulo?: boolean
   descripcion?: boolean
-  precio_estimado?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  precioEstimado?: boolean
+  disponible?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   profesional?: boolean | Prisma.ProfesionalDefaultArgs<ExtArgs>
   oficio?: boolean | Prisma.OficioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["servicio"]>
 
 export type ServicioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  profesional_id?: boolean
-  oficio_id?: boolean
+  profesionalId?: boolean
+  oficioId?: boolean
   titulo?: boolean
   descripcion?: boolean
-  precio_estimado?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  precioEstimado?: boolean
+  disponible?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   profesional?: boolean | Prisma.ProfesionalDefaultArgs<ExtArgs>
   oficio?: boolean | Prisma.OficioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["servicio"]>
 
 export type ServicioSelectScalar = {
   id?: boolean
-  profesional_id?: boolean
-  oficio_id?: boolean
+  profesionalId?: boolean
+  oficioId?: boolean
   titulo?: boolean
   descripcion?: boolean
-  precio_estimado?: boolean
-  fecha_creacion?: boolean
-  fecha_actualizacion?: boolean
+  precioEstimado?: boolean
+  disponible?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ServicioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profesional_id" | "oficio_id" | "titulo" | "descripcion" | "precio_estimado" | "fecha_creacion" | "fecha_actualizacion", ExtArgs["result"]["servicio"]>
+export type ServicioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profesionalId" | "oficioId" | "titulo" | "descripcion" | "precioEstimado" | "disponible" | "createdAt" | "updatedAt", ExtArgs["result"]["servicio"]>
 export type ServicioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profesional?: boolean | Prisma.ProfesionalDefaultArgs<ExtArgs>
   oficio?: boolean | Prisma.OficioDefaultArgs<ExtArgs>
@@ -918,13 +961,14 @@ export type $ServicioPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    profesional_id: number
-    oficio_id: number
+    profesionalId: number
+    oficioId: number
     titulo: string
-    descripcion: string | null
-    precio_estimado: runtime.Decimal | null
-    fecha_creacion: Date
-    fecha_actualizacion: Date
+    descripcion: string
+    precioEstimado: runtime.Decimal | null
+    disponible: boolean
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["servicio"]>
   composites: {}
 }
@@ -1352,13 +1396,14 @@ export interface Prisma__ServicioClient<T, Null = never, ExtArgs extends runtime
  */
 export interface ServicioFieldRefs {
   readonly id: Prisma.FieldRef<"Servicio", 'Int'>
-  readonly profesional_id: Prisma.FieldRef<"Servicio", 'Int'>
-  readonly oficio_id: Prisma.FieldRef<"Servicio", 'Int'>
+  readonly profesionalId: Prisma.FieldRef<"Servicio", 'Int'>
+  readonly oficioId: Prisma.FieldRef<"Servicio", 'Int'>
   readonly titulo: Prisma.FieldRef<"Servicio", 'String'>
   readonly descripcion: Prisma.FieldRef<"Servicio", 'String'>
-  readonly precio_estimado: Prisma.FieldRef<"Servicio", 'Decimal'>
-  readonly fecha_creacion: Prisma.FieldRef<"Servicio", 'DateTime'>
-  readonly fecha_actualizacion: Prisma.FieldRef<"Servicio", 'DateTime'>
+  readonly precioEstimado: Prisma.FieldRef<"Servicio", 'Decimal'>
+  readonly disponible: Prisma.FieldRef<"Servicio", 'Boolean'>
+  readonly createdAt: Prisma.FieldRef<"Servicio", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Servicio", 'DateTime'>
 }
     
 

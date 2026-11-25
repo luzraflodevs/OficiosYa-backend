@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { OficiosService } from './oficios.service.js';
 import { CreateOficioDto } from './dto/create-oficio.dto.js';
 import { UpdateOficioDto } from './dto/update-oficio.dto.js';
@@ -18,17 +27,20 @@ export class OficiosController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.oficiosService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.oficiosService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateOficioDto: UpdateOficioDto) {
-    return this.oficiosService.update(+id, updateOficioDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateOficioDto: UpdateOficioDto,
+  ) {
+    return this.oficiosService.update(id, updateOficioDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.oficiosService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.oficiosService.remove(id);
   }
 }
