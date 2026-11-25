@@ -39,12 +39,12 @@ export type UsuarioMinAggregateOutputType = {
   nombre: string | null
   apellido: string | null
   email: string | null
-  passwordHash: string | null
+  contrasena_hash: string | null
   telefono: string | null
   rol: $Enums.RolUsuario | null
   activo: boolean | null
-  createdAt: Date | null
-  updatedAt: Date | null
+  creado_en: Date | null
+  actualizado_en: Date | null
 }
 
 export type UsuarioMaxAggregateOutputType = {
@@ -52,12 +52,12 @@ export type UsuarioMaxAggregateOutputType = {
   nombre: string | null
   apellido: string | null
   email: string | null
-  passwordHash: string | null
+  contrasena_hash: string | null
   telefono: string | null
   rol: $Enums.RolUsuario | null
   activo: boolean | null
-  createdAt: Date | null
-  updatedAt: Date | null
+  creado_en: Date | null
+  actualizado_en: Date | null
 }
 
 export type UsuarioCountAggregateOutputType = {
@@ -65,12 +65,12 @@ export type UsuarioCountAggregateOutputType = {
   nombre: number
   apellido: number
   email: number
-  passwordHash: number
+  contrasena_hash: number
   telefono: number
   rol: number
   activo: number
-  createdAt: number
-  updatedAt: number
+  creado_en: number
+  actualizado_en: number
   _all: number
 }
 
@@ -88,12 +88,12 @@ export type UsuarioMinAggregateInputType = {
   nombre?: true
   apellido?: true
   email?: true
-  passwordHash?: true
+  contrasena_hash?: true
   telefono?: true
   rol?: true
   activo?: true
-  createdAt?: true
-  updatedAt?: true
+  creado_en?: true
+  actualizado_en?: true
 }
 
 export type UsuarioMaxAggregateInputType = {
@@ -101,12 +101,12 @@ export type UsuarioMaxAggregateInputType = {
   nombre?: true
   apellido?: true
   email?: true
-  passwordHash?: true
+  contrasena_hash?: true
   telefono?: true
   rol?: true
   activo?: true
-  createdAt?: true
-  updatedAt?: true
+  creado_en?: true
+  actualizado_en?: true
 }
 
 export type UsuarioCountAggregateInputType = {
@@ -114,12 +114,12 @@ export type UsuarioCountAggregateInputType = {
   nombre?: true
   apellido?: true
   email?: true
-  passwordHash?: true
+  contrasena_hash?: true
   telefono?: true
   rol?: true
   activo?: true
-  createdAt?: true
-  updatedAt?: true
+  creado_en?: true
+  actualizado_en?: true
   _all?: true
 }
 
@@ -214,12 +214,12 @@ export type UsuarioGroupByOutputType = {
   nombre: string
   apellido: string
   email: string
-  passwordHash: string
+  contrasena_hash: string
   telefono: string | null
   rol: $Enums.RolUsuario
   activo: boolean
-  createdAt: Date
-  updatedAt: Date
+  creado_en: Date
+  actualizado_en: Date
   _count: UsuarioCountAggregateOutputType | null
   _avg: UsuarioAvgAggregateOutputType | null
   _sum: UsuarioSumAggregateOutputType | null
@@ -250,12 +250,12 @@ export type UsuarioWhereInput = {
   nombre?: Prisma.StringFilter<"Usuario"> | string
   apellido?: Prisma.StringFilter<"Usuario"> | string
   email?: Prisma.StringFilter<"Usuario"> | string
-  passwordHash?: Prisma.StringFilter<"Usuario"> | string
+  contrasena_hash?: Prisma.StringFilter<"Usuario"> | string
   telefono?: Prisma.StringNullableFilter<"Usuario"> | string | null
   rol?: Prisma.EnumRolUsuarioFilter<"Usuario"> | $Enums.RolUsuario
   activo?: Prisma.BoolFilter<"Usuario"> | boolean
-  createdAt?: Prisma.DateTimeFilter<"Usuario"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Usuario"> | Date | string
+  creado_en?: Prisma.DateTimeFilter<"Usuario"> | Date | string
+  actualizado_en?: Prisma.DateTimeFilter<"Usuario"> | Date | string
   profesional?: Prisma.XOR<Prisma.ProfesionalNullableScalarRelationFilter, Prisma.ProfesionalWhereInput> | null
   resenas?: Prisma.ResenaListRelationFilter
 }
@@ -265,12 +265,12 @@ export type UsuarioOrderByWithRelationInput = {
   nombre?: Prisma.SortOrder
   apellido?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  passwordHash?: Prisma.SortOrder
+  contrasena_hash?: Prisma.SortOrder
   telefono?: Prisma.SortOrderInput | Prisma.SortOrder
   rol?: Prisma.SortOrder
   activo?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
   profesional?: Prisma.ProfesionalOrderByWithRelationInput
   resenas?: Prisma.ResenaOrderByRelationAggregateInput
 }
@@ -283,12 +283,12 @@ export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UsuarioWhereInput | Prisma.UsuarioWhereInput[]
   nombre?: Prisma.StringFilter<"Usuario"> | string
   apellido?: Prisma.StringFilter<"Usuario"> | string
-  passwordHash?: Prisma.StringFilter<"Usuario"> | string
+  contrasena_hash?: Prisma.StringFilter<"Usuario"> | string
   telefono?: Prisma.StringNullableFilter<"Usuario"> | string | null
   rol?: Prisma.EnumRolUsuarioFilter<"Usuario"> | $Enums.RolUsuario
   activo?: Prisma.BoolFilter<"Usuario"> | boolean
-  createdAt?: Prisma.DateTimeFilter<"Usuario"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Usuario"> | Date | string
+  creado_en?: Prisma.DateTimeFilter<"Usuario"> | Date | string
+  actualizado_en?: Prisma.DateTimeFilter<"Usuario"> | Date | string
   profesional?: Prisma.XOR<Prisma.ProfesionalNullableScalarRelationFilter, Prisma.ProfesionalWhereInput> | null
   resenas?: Prisma.ResenaListRelationFilter
 }, "id" | "email">
@@ -298,12 +298,12 @@ export type UsuarioOrderByWithAggregationInput = {
   nombre?: Prisma.SortOrder
   apellido?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  passwordHash?: Prisma.SortOrder
+  contrasena_hash?: Prisma.SortOrder
   telefono?: Prisma.SortOrderInput | Prisma.SortOrder
   rol?: Prisma.SortOrder
   activo?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
   _count?: Prisma.UsuarioCountOrderByAggregateInput
   _avg?: Prisma.UsuarioAvgOrderByAggregateInput
   _max?: Prisma.UsuarioMaxOrderByAggregateInput
@@ -319,24 +319,24 @@ export type UsuarioScalarWhereWithAggregatesInput = {
   nombre?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
   apellido?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
   email?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
-  passwordHash?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
+  contrasena_hash?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
   telefono?: Prisma.StringNullableWithAggregatesFilter<"Usuario"> | string | null
   rol?: Prisma.EnumRolUsuarioWithAggregatesFilter<"Usuario"> | $Enums.RolUsuario
   activo?: Prisma.BoolWithAggregatesFilter<"Usuario"> | boolean
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Usuario"> | Date | string
-  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Usuario"> | Date | string
+  creado_en?: Prisma.DateTimeWithAggregatesFilter<"Usuario"> | Date | string
+  actualizado_en?: Prisma.DateTimeWithAggregatesFilter<"Usuario"> | Date | string
 }
 
 export type UsuarioCreateInput = {
   nombre: string
   apellido: string
   email: string
-  passwordHash: string
+  contrasena_hash: string
   telefono?: string | null
   rol?: $Enums.RolUsuario
   activo?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   profesional?: Prisma.ProfesionalCreateNestedOneWithoutUsuarioInput
   resenas?: Prisma.ResenaCreateNestedManyWithoutUsuarioInput
 }
@@ -346,12 +346,12 @@ export type UsuarioUncheckedCreateInput = {
   nombre: string
   apellido: string
   email: string
-  passwordHash: string
+  contrasena_hash: string
   telefono?: string | null
   rol?: $Enums.RolUsuario
   activo?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   profesional?: Prisma.ProfesionalUncheckedCreateNestedOneWithoutUsuarioInput
   resenas?: Prisma.ResenaUncheckedCreateNestedManyWithoutUsuarioInput
 }
@@ -360,12 +360,12 @@ export type UsuarioUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena_hash?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol?: Prisma.EnumRolUsuarioFieldUpdateOperationsInput | $Enums.RolUsuario
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profesional?: Prisma.ProfesionalUpdateOneWithoutUsuarioNestedInput
   resenas?: Prisma.ResenaUpdateManyWithoutUsuarioNestedInput
 }
@@ -375,12 +375,12 @@ export type UsuarioUncheckedUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena_hash?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol?: Prisma.EnumRolUsuarioFieldUpdateOperationsInput | $Enums.RolUsuario
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profesional?: Prisma.ProfesionalUncheckedUpdateOneWithoutUsuarioNestedInput
   resenas?: Prisma.ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
@@ -390,24 +390,24 @@ export type UsuarioCreateManyInput = {
   nombre: string
   apellido: string
   email: string
-  passwordHash: string
+  contrasena_hash: string
   telefono?: string | null
   rol?: $Enums.RolUsuario
   activo?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  creado_en?: Date | string
+  actualizado_en?: Date | string
 }
 
 export type UsuarioUpdateManyMutationInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena_hash?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol?: Prisma.EnumRolUsuarioFieldUpdateOperationsInput | $Enums.RolUsuario
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UsuarioUncheckedUpdateManyInput = {
@@ -415,12 +415,12 @@ export type UsuarioUncheckedUpdateManyInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena_hash?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol?: Prisma.EnumRolUsuarioFieldUpdateOperationsInput | $Enums.RolUsuario
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UsuarioCountOrderByAggregateInput = {
@@ -428,12 +428,12 @@ export type UsuarioCountOrderByAggregateInput = {
   nombre?: Prisma.SortOrder
   apellido?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  passwordHash?: Prisma.SortOrder
+  contrasena_hash?: Prisma.SortOrder
   telefono?: Prisma.SortOrder
   rol?: Prisma.SortOrder
   activo?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type UsuarioAvgOrderByAggregateInput = {
@@ -445,12 +445,12 @@ export type UsuarioMaxOrderByAggregateInput = {
   nombre?: Prisma.SortOrder
   apellido?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  passwordHash?: Prisma.SortOrder
+  contrasena_hash?: Prisma.SortOrder
   telefono?: Prisma.SortOrder
   rol?: Prisma.SortOrder
   activo?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type UsuarioMinOrderByAggregateInput = {
@@ -458,12 +458,12 @@ export type UsuarioMinOrderByAggregateInput = {
   nombre?: Prisma.SortOrder
   apellido?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  passwordHash?: Prisma.SortOrder
+  contrasena_hash?: Prisma.SortOrder
   telefono?: Prisma.SortOrder
   rol?: Prisma.SortOrder
   activo?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type UsuarioSumOrderByAggregateInput = {
@@ -523,12 +523,12 @@ export type UsuarioCreateWithoutProfesionalInput = {
   nombre: string
   apellido: string
   email: string
-  passwordHash: string
+  contrasena_hash: string
   telefono?: string | null
   rol?: $Enums.RolUsuario
   activo?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   resenas?: Prisma.ResenaCreateNestedManyWithoutUsuarioInput
 }
 
@@ -537,12 +537,12 @@ export type UsuarioUncheckedCreateWithoutProfesionalInput = {
   nombre: string
   apellido: string
   email: string
-  passwordHash: string
+  contrasena_hash: string
   telefono?: string | null
   rol?: $Enums.RolUsuario
   activo?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   resenas?: Prisma.ResenaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
@@ -566,12 +566,12 @@ export type UsuarioUpdateWithoutProfesionalInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena_hash?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol?: Prisma.EnumRolUsuarioFieldUpdateOperationsInput | $Enums.RolUsuario
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resenas?: Prisma.ResenaUpdateManyWithoutUsuarioNestedInput
 }
 
@@ -580,12 +580,12 @@ export type UsuarioUncheckedUpdateWithoutProfesionalInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena_hash?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol?: Prisma.EnumRolUsuarioFieldUpdateOperationsInput | $Enums.RolUsuario
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resenas?: Prisma.ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
@@ -593,12 +593,12 @@ export type UsuarioCreateWithoutResenasInput = {
   nombre: string
   apellido: string
   email: string
-  passwordHash: string
+  contrasena_hash: string
   telefono?: string | null
   rol?: $Enums.RolUsuario
   activo?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   profesional?: Prisma.ProfesionalCreateNestedOneWithoutUsuarioInput
 }
 
@@ -607,12 +607,12 @@ export type UsuarioUncheckedCreateWithoutResenasInput = {
   nombre: string
   apellido: string
   email: string
-  passwordHash: string
+  contrasena_hash: string
   telefono?: string | null
   rol?: $Enums.RolUsuario
   activo?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   profesional?: Prisma.ProfesionalUncheckedCreateNestedOneWithoutUsuarioInput
 }
 
@@ -636,12 +636,12 @@ export type UsuarioUpdateWithoutResenasInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena_hash?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol?: Prisma.EnumRolUsuarioFieldUpdateOperationsInput | $Enums.RolUsuario
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profesional?: Prisma.ProfesionalUpdateOneWithoutUsuarioNestedInput
 }
 
@@ -650,12 +650,12 @@ export type UsuarioUncheckedUpdateWithoutResenasInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena_hash?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol?: Prisma.EnumRolUsuarioFieldUpdateOperationsInput | $Enums.RolUsuario
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profesional?: Prisma.ProfesionalUncheckedUpdateOneWithoutUsuarioNestedInput
 }
 
@@ -695,12 +695,12 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   nombre?: boolean
   apellido?: boolean
   email?: boolean
-  passwordHash?: boolean
+  contrasena_hash?: boolean
   telefono?: boolean
   rol?: boolean
   activo?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
   profesional?: boolean | Prisma.Usuario$profesionalArgs<ExtArgs>
   resenas?: boolean | Prisma.Usuario$resenasArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
@@ -711,12 +711,12 @@ export type UsuarioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   nombre?: boolean
   apellido?: boolean
   email?: boolean
-  passwordHash?: boolean
+  contrasena_hash?: boolean
   telefono?: boolean
   rol?: boolean
   activo?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
 }, ExtArgs["result"]["usuario"]>
 
 export type UsuarioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -724,12 +724,12 @@ export type UsuarioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   nombre?: boolean
   apellido?: boolean
   email?: boolean
-  passwordHash?: boolean
+  contrasena_hash?: boolean
   telefono?: boolean
   rol?: boolean
   activo?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
 }, ExtArgs["result"]["usuario"]>
 
 export type UsuarioSelectScalar = {
@@ -737,15 +737,15 @@ export type UsuarioSelectScalar = {
   nombre?: boolean
   apellido?: boolean
   email?: boolean
-  passwordHash?: boolean
+  contrasena_hash?: boolean
   telefono?: boolean
   rol?: boolean
   activo?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
 }
 
-export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "apellido" | "email" | "passwordHash" | "telefono" | "rol" | "activo" | "createdAt" | "updatedAt", ExtArgs["result"]["usuario"]>
+export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "apellido" | "email" | "contrasena_hash" | "telefono" | "rol" | "activo" | "creado_en" | "actualizado_en", ExtArgs["result"]["usuario"]>
 export type UsuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profesional?: boolean | Prisma.Usuario$profesionalArgs<ExtArgs>
   resenas?: boolean | Prisma.Usuario$resenasArgs<ExtArgs>
@@ -765,12 +765,12 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     nombre: string
     apellido: string
     email: string
-    passwordHash: string
+    contrasena_hash: string
     telefono: string | null
     rol: $Enums.RolUsuario
     activo: boolean
-    createdAt: Date
-    updatedAt: Date
+    creado_en: Date
+    actualizado_en: Date
   }, ExtArgs["result"]["usuario"]>
   composites: {}
 }
@@ -1200,12 +1200,12 @@ export interface UsuarioFieldRefs {
   readonly nombre: Prisma.FieldRef<"Usuario", 'String'>
   readonly apellido: Prisma.FieldRef<"Usuario", 'String'>
   readonly email: Prisma.FieldRef<"Usuario", 'String'>
-  readonly passwordHash: Prisma.FieldRef<"Usuario", 'String'>
+  readonly contrasena_hash: Prisma.FieldRef<"Usuario", 'String'>
   readonly telefono: Prisma.FieldRef<"Usuario", 'String'>
   readonly rol: Prisma.FieldRef<"Usuario", 'RolUsuario'>
   readonly activo: Prisma.FieldRef<"Usuario", 'Boolean'>
-  readonly createdAt: Prisma.FieldRef<"Usuario", 'DateTime'>
-  readonly updatedAt: Prisma.FieldRef<"Usuario", 'DateTime'>
+  readonly creado_en: Prisma.FieldRef<"Usuario", 'DateTime'>
+  readonly actualizado_en: Prisma.FieldRef<"Usuario", 'DateTime'>
 }
     
 

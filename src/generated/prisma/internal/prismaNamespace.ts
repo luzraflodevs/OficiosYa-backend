@@ -982,8 +982,9 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UbicacionScalarFieldEnum = {
   id: 'id',
-  ciudad: 'ciudad',
-  provincia: 'provincia'
+  localidad: 'localidad',
+  provincia: 'provincia',
+  codigo_postal: 'codigo_postal'
 } as const
 
 export type UbicacionScalarFieldEnum = (typeof UbicacionScalarFieldEnum)[keyof typeof UbicacionScalarFieldEnum]
@@ -994,12 +995,12 @@ export const UsuarioScalarFieldEnum = {
   nombre: 'nombre',
   apellido: 'apellido',
   email: 'email',
-  passwordHash: 'passwordHash',
+  contrasena_hash: 'contrasena_hash',
   telefono: 'telefono',
   rol: 'rol',
   activo: 'activo',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  creado_en: 'creado_en',
+  actualizado_en: 'actualizado_en'
 } as const
 
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
@@ -1007,14 +1008,13 @@ export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeo
 
 export const ProfesionalScalarFieldEnum = {
   id: 'id',
-  usuarioId: 'usuarioId',
-  ubicacionId: 'ubicacionId',
-  biografia: 'biografia',
-  foto: 'foto',
+  usuario_id: 'usuario_id',
+  ubicacion_id: 'ubicacion_id',
+  descripcion: 'descripcion',
   matricula: 'matricula',
-  verificado: 'verificado',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  activo: 'activo',
+  creado_en: 'creado_en',
+  actualizado_en: 'actualizado_en'
 } as const
 
 export type ProfesionalScalarFieldEnum = (typeof ProfesionalScalarFieldEnum)[keyof typeof ProfesionalScalarFieldEnum]
@@ -1024,10 +1024,9 @@ export const OficioScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
   descripcion: 'descripcion',
-  imagen: 'imagen',
   activo: 'activo',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  creado_en: 'creado_en',
+  actualizado_en: 'actualizado_en'
 } as const
 
 export type OficioScalarFieldEnum = (typeof OficioScalarFieldEnum)[keyof typeof OficioScalarFieldEnum]
@@ -1035,14 +1034,14 @@ export type OficioScalarFieldEnum = (typeof OficioScalarFieldEnum)[keyof typeof 
 
 export const ServicioScalarFieldEnum = {
   id: 'id',
-  profesionalId: 'profesionalId',
-  oficioId: 'oficioId',
+  profesional_id: 'profesional_id',
+  oficio_id: 'oficio_id',
   titulo: 'titulo',
   descripcion: 'descripcion',
-  precioEstimado: 'precioEstimado',
-  disponible: 'disponible',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  precio: 'precio',
+  activo: 'activo',
+  creado_en: 'creado_en',
+  actualizado_en: 'actualizado_en'
 } as const
 
 export type ServicioScalarFieldEnum = (typeof ServicioScalarFieldEnum)[keyof typeof ServicioScalarFieldEnum]
@@ -1050,12 +1049,13 @@ export type ServicioScalarFieldEnum = (typeof ServicioScalarFieldEnum)[keyof typ
 
 export const ResenaScalarFieldEnum = {
   id: 'id',
-  usuarioId: 'usuarioId',
-  servicioId: 'servicioId',
+  servicio_id: 'servicio_id',
+  usuario_id: 'usuario_id',
   calificacion: 'calificacion',
   comentario: 'comentario',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  activo: 'activo',
+  creado_en: 'creado_en',
+  actualizado_en: 'actualizado_en'
 } as const
 
 export type ResenaScalarFieldEnum = (typeof ResenaScalarFieldEnum)[keyof typeof ResenaScalarFieldEnum]
@@ -1065,9 +1065,12 @@ export const ContactoScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
   email: 'email',
-  detalle: 'detalle',
+  asunto: 'asunto',
+  mensaje: 'mensaje',
   leido: 'leido',
-  createdAt: 'createdAt'
+  activo: 'activo',
+  creado_en: 'creado_en',
+  actualizado_en: 'actualizado_en'
 } as const
 
 export type ContactoScalarFieldEnum = (typeof ContactoScalarFieldEnum)[keyof typeof ContactoScalarFieldEnum]

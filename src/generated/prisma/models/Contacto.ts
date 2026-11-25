@@ -38,27 +38,36 @@ export type ContactoMinAggregateOutputType = {
   id: number | null
   nombre: string | null
   email: string | null
-  detalle: string | null
+  asunto: string | null
+  mensaje: string | null
   leido: boolean | null
-  createdAt: Date | null
+  activo: boolean | null
+  creado_en: Date | null
+  actualizado_en: Date | null
 }
 
 export type ContactoMaxAggregateOutputType = {
   id: number | null
   nombre: string | null
   email: string | null
-  detalle: string | null
+  asunto: string | null
+  mensaje: string | null
   leido: boolean | null
-  createdAt: Date | null
+  activo: boolean | null
+  creado_en: Date | null
+  actualizado_en: Date | null
 }
 
 export type ContactoCountAggregateOutputType = {
   id: number
   nombre: number
   email: number
-  detalle: number
+  asunto: number
+  mensaje: number
   leido: number
-  createdAt: number
+  activo: number
+  creado_en: number
+  actualizado_en: number
   _all: number
 }
 
@@ -75,27 +84,36 @@ export type ContactoMinAggregateInputType = {
   id?: true
   nombre?: true
   email?: true
-  detalle?: true
+  asunto?: true
+  mensaje?: true
   leido?: true
-  createdAt?: true
+  activo?: true
+  creado_en?: true
+  actualizado_en?: true
 }
 
 export type ContactoMaxAggregateInputType = {
   id?: true
   nombre?: true
   email?: true
-  detalle?: true
+  asunto?: true
+  mensaje?: true
   leido?: true
-  createdAt?: true
+  activo?: true
+  creado_en?: true
+  actualizado_en?: true
 }
 
 export type ContactoCountAggregateInputType = {
   id?: true
   nombre?: true
   email?: true
-  detalle?: true
+  asunto?: true
+  mensaje?: true
   leido?: true
-  createdAt?: true
+  activo?: true
+  creado_en?: true
+  actualizado_en?: true
   _all?: true
 }
 
@@ -189,9 +207,12 @@ export type ContactoGroupByOutputType = {
   id: number
   nombre: string
   email: string
-  detalle: string
+  asunto: string
+  mensaje: string
   leido: boolean
-  createdAt: Date
+  activo: boolean
+  creado_en: Date
+  actualizado_en: Date
   _count: ContactoCountAggregateOutputType | null
   _avg: ContactoAvgAggregateOutputType | null
   _sum: ContactoSumAggregateOutputType | null
@@ -221,18 +242,24 @@ export type ContactoWhereInput = {
   id?: Prisma.IntFilter<"Contacto"> | number
   nombre?: Prisma.StringFilter<"Contacto"> | string
   email?: Prisma.StringFilter<"Contacto"> | string
-  detalle?: Prisma.StringFilter<"Contacto"> | string
+  asunto?: Prisma.StringFilter<"Contacto"> | string
+  mensaje?: Prisma.StringFilter<"Contacto"> | string
   leido?: Prisma.BoolFilter<"Contacto"> | boolean
-  createdAt?: Prisma.DateTimeFilter<"Contacto"> | Date | string
+  activo?: Prisma.BoolFilter<"Contacto"> | boolean
+  creado_en?: Prisma.DateTimeFilter<"Contacto"> | Date | string
+  actualizado_en?: Prisma.DateTimeFilter<"Contacto"> | Date | string
 }
 
 export type ContactoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  detalle?: Prisma.SortOrder
+  asunto?: Prisma.SortOrder
+  mensaje?: Prisma.SortOrder
   leido?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type ContactoWhereUniqueInput = Prisma.AtLeast<{
@@ -242,18 +269,24 @@ export type ContactoWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ContactoWhereInput | Prisma.ContactoWhereInput[]
   nombre?: Prisma.StringFilter<"Contacto"> | string
   email?: Prisma.StringFilter<"Contacto"> | string
-  detalle?: Prisma.StringFilter<"Contacto"> | string
+  asunto?: Prisma.StringFilter<"Contacto"> | string
+  mensaje?: Prisma.StringFilter<"Contacto"> | string
   leido?: Prisma.BoolFilter<"Contacto"> | boolean
-  createdAt?: Prisma.DateTimeFilter<"Contacto"> | Date | string
+  activo?: Prisma.BoolFilter<"Contacto"> | boolean
+  creado_en?: Prisma.DateTimeFilter<"Contacto"> | Date | string
+  actualizado_en?: Prisma.DateTimeFilter<"Contacto"> | Date | string
 }, "id">
 
 export type ContactoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  detalle?: Prisma.SortOrder
+  asunto?: Prisma.SortOrder
+  mensaje?: Prisma.SortOrder
   leido?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
   _count?: Prisma.ContactoCountOrderByAggregateInput
   _avg?: Prisma.ContactoAvgOrderByAggregateInput
   _max?: Prisma.ContactoMaxOrderByAggregateInput
@@ -268,78 +301,105 @@ export type ContactoScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Contacto"> | number
   nombre?: Prisma.StringWithAggregatesFilter<"Contacto"> | string
   email?: Prisma.StringWithAggregatesFilter<"Contacto"> | string
-  detalle?: Prisma.StringWithAggregatesFilter<"Contacto"> | string
+  asunto?: Prisma.StringWithAggregatesFilter<"Contacto"> | string
+  mensaje?: Prisma.StringWithAggregatesFilter<"Contacto"> | string
   leido?: Prisma.BoolWithAggregatesFilter<"Contacto"> | boolean
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Contacto"> | Date | string
+  activo?: Prisma.BoolWithAggregatesFilter<"Contacto"> | boolean
+  creado_en?: Prisma.DateTimeWithAggregatesFilter<"Contacto"> | Date | string
+  actualizado_en?: Prisma.DateTimeWithAggregatesFilter<"Contacto"> | Date | string
 }
 
 export type ContactoCreateInput = {
   nombre: string
   email: string
-  detalle: string
+  asunto: string
+  mensaje: string
   leido?: boolean
-  createdAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
 }
 
 export type ContactoUncheckedCreateInput = {
   id?: number
   nombre: string
   email: string
-  detalle: string
+  asunto: string
+  mensaje: string
   leido?: boolean
-  createdAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
 }
 
 export type ContactoUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  detalle?: Prisma.StringFieldUpdateOperationsInput | string
+  asunto?: Prisma.StringFieldUpdateOperationsInput | string
+  mensaje?: Prisma.StringFieldUpdateOperationsInput | string
   leido?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ContactoUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  detalle?: Prisma.StringFieldUpdateOperationsInput | string
+  asunto?: Prisma.StringFieldUpdateOperationsInput | string
+  mensaje?: Prisma.StringFieldUpdateOperationsInput | string
   leido?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ContactoCreateManyInput = {
   id?: number
   nombre: string
   email: string
-  detalle: string
+  asunto: string
+  mensaje: string
   leido?: boolean
-  createdAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
 }
 
 export type ContactoUpdateManyMutationInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  detalle?: Prisma.StringFieldUpdateOperationsInput | string
+  asunto?: Prisma.StringFieldUpdateOperationsInput | string
+  mensaje?: Prisma.StringFieldUpdateOperationsInput | string
   leido?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ContactoUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  detalle?: Prisma.StringFieldUpdateOperationsInput | string
+  asunto?: Prisma.StringFieldUpdateOperationsInput | string
+  mensaje?: Prisma.StringFieldUpdateOperationsInput | string
   leido?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ContactoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  detalle?: Prisma.SortOrder
+  asunto?: Prisma.SortOrder
+  mensaje?: Prisma.SortOrder
   leido?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type ContactoAvgOrderByAggregateInput = {
@@ -350,18 +410,24 @@ export type ContactoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  detalle?: Prisma.SortOrder
+  asunto?: Prisma.SortOrder
+  mensaje?: Prisma.SortOrder
   leido?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type ContactoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  detalle?: Prisma.SortOrder
+  asunto?: Prisma.SortOrder
+  mensaje?: Prisma.SortOrder
   leido?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type ContactoSumOrderByAggregateInput = {
@@ -374,39 +440,51 @@ export type ContactoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   nombre?: boolean
   email?: boolean
-  detalle?: boolean
+  asunto?: boolean
+  mensaje?: boolean
   leido?: boolean
-  createdAt?: boolean
+  activo?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
 }, ExtArgs["result"]["contacto"]>
 
 export type ContactoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre?: boolean
   email?: boolean
-  detalle?: boolean
+  asunto?: boolean
+  mensaje?: boolean
   leido?: boolean
-  createdAt?: boolean
+  activo?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
 }, ExtArgs["result"]["contacto"]>
 
 export type ContactoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre?: boolean
   email?: boolean
-  detalle?: boolean
+  asunto?: boolean
+  mensaje?: boolean
   leido?: boolean
-  createdAt?: boolean
+  activo?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
 }, ExtArgs["result"]["contacto"]>
 
 export type ContactoSelectScalar = {
   id?: boolean
   nombre?: boolean
   email?: boolean
-  detalle?: boolean
+  asunto?: boolean
+  mensaje?: boolean
   leido?: boolean
-  createdAt?: boolean
+  activo?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
 }
 
-export type ContactoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "email" | "detalle" | "leido" | "createdAt", ExtArgs["result"]["contacto"]>
+export type ContactoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "email" | "asunto" | "mensaje" | "leido" | "activo" | "creado_en" | "actualizado_en", ExtArgs["result"]["contacto"]>
 
 export type $ContactoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Contacto"
@@ -415,9 +493,12 @@ export type $ContactoPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     id: number
     nombre: string
     email: string
-    detalle: string
+    asunto: string
+    mensaje: string
     leido: boolean
-    createdAt: Date
+    activo: boolean
+    creado_en: Date
+    actualizado_en: Date
   }, ExtArgs["result"]["contacto"]>
   composites: {}
 }
@@ -844,9 +925,12 @@ export interface ContactoFieldRefs {
   readonly id: Prisma.FieldRef<"Contacto", 'Int'>
   readonly nombre: Prisma.FieldRef<"Contacto", 'String'>
   readonly email: Prisma.FieldRef<"Contacto", 'String'>
-  readonly detalle: Prisma.FieldRef<"Contacto", 'String'>
+  readonly asunto: Prisma.FieldRef<"Contacto", 'String'>
+  readonly mensaje: Prisma.FieldRef<"Contacto", 'String'>
   readonly leido: Prisma.FieldRef<"Contacto", 'Boolean'>
-  readonly createdAt: Prisma.FieldRef<"Contacto", 'DateTime'>
+  readonly activo: Prisma.FieldRef<"Contacto", 'Boolean'>
+  readonly creado_en: Prisma.FieldRef<"Contacto", 'DateTime'>
+  readonly actualizado_en: Prisma.FieldRef<"Contacto", 'DateTime'>
 }
     
 
