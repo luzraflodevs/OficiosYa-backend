@@ -28,100 +28,94 @@ export type AggregateProfesional = {
 
 export type ProfesionalAvgAggregateOutputType = {
   id: number | null
-  usuarioId: number | null
-  ubicacionId: number | null
+  usuario_id: number | null
+  ubicacion_id: number | null
 }
 
 export type ProfesionalSumAggregateOutputType = {
   id: number | null
-  usuarioId: number | null
-  ubicacionId: number | null
+  usuario_id: number | null
+  ubicacion_id: number | null
 }
 
 export type ProfesionalMinAggregateOutputType = {
   id: number | null
-  usuarioId: number | null
-  ubicacionId: number | null
-  biografia: string | null
-  foto: string | null
+  usuario_id: number | null
+  ubicacion_id: number | null
+  descripcion: string | null
   matricula: string | null
-  verificado: boolean | null
-  createdAt: Date | null
-  updatedAt: Date | null
+  activo: boolean | null
+  creado_en: Date | null
+  actualizado_en: Date | null
 }
 
 export type ProfesionalMaxAggregateOutputType = {
   id: number | null
-  usuarioId: number | null
-  ubicacionId: number | null
-  biografia: string | null
-  foto: string | null
+  usuario_id: number | null
+  ubicacion_id: number | null
+  descripcion: string | null
   matricula: string | null
-  verificado: boolean | null
-  createdAt: Date | null
-  updatedAt: Date | null
+  activo: boolean | null
+  creado_en: Date | null
+  actualizado_en: Date | null
 }
 
 export type ProfesionalCountAggregateOutputType = {
   id: number
-  usuarioId: number
-  ubicacionId: number
-  biografia: number
-  foto: number
+  usuario_id: number
+  ubicacion_id: number
+  descripcion: number
   matricula: number
-  verificado: number
-  createdAt: number
-  updatedAt: number
+  activo: number
+  creado_en: number
+  actualizado_en: number
   _all: number
 }
 
 
 export type ProfesionalAvgAggregateInputType = {
   id?: true
-  usuarioId?: true
-  ubicacionId?: true
+  usuario_id?: true
+  ubicacion_id?: true
 }
 
 export type ProfesionalSumAggregateInputType = {
   id?: true
-  usuarioId?: true
-  ubicacionId?: true
+  usuario_id?: true
+  ubicacion_id?: true
 }
 
 export type ProfesionalMinAggregateInputType = {
   id?: true
-  usuarioId?: true
-  ubicacionId?: true
-  biografia?: true
-  foto?: true
+  usuario_id?: true
+  ubicacion_id?: true
+  descripcion?: true
   matricula?: true
-  verificado?: true
-  createdAt?: true
-  updatedAt?: true
+  activo?: true
+  creado_en?: true
+  actualizado_en?: true
 }
 
 export type ProfesionalMaxAggregateInputType = {
   id?: true
-  usuarioId?: true
-  ubicacionId?: true
-  biografia?: true
-  foto?: true
+  usuario_id?: true
+  ubicacion_id?: true
+  descripcion?: true
   matricula?: true
-  verificado?: true
-  createdAt?: true
-  updatedAt?: true
+  activo?: true
+  creado_en?: true
+  actualizado_en?: true
 }
 
 export type ProfesionalCountAggregateInputType = {
   id?: true
-  usuarioId?: true
-  ubicacionId?: true
-  biografia?: true
-  foto?: true
+  usuario_id?: true
+  ubicacion_id?: true
+  descripcion?: true
   matricula?: true
-  verificado?: true
-  createdAt?: true
-  updatedAt?: true
+  activo?: true
+  creado_en?: true
+  actualizado_en?: true
   _all?: true
 }
 
@@ -213,14 +207,13 @@ export type ProfesionalGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 
 export type ProfesionalGroupByOutputType = {
   id: number
-  usuarioId: number
-  ubicacionId: number
-  biografia: string | null
-  foto: string | null
+  usuario_id: number
+  ubicacion_id: number
+  descripcion: string | null
   matricula: string | null
-  verificado: boolean
-  createdAt: Date
-  updatedAt: Date
+  activo: boolean
+  creado_en: Date
+  actualizado_en: Date
   _count: ProfesionalCountAggregateOutputType | null
   _avg: ProfesionalAvgAggregateOutputType | null
   _sum: ProfesionalSumAggregateOutputType | null
@@ -248,14 +241,13 @@ export type ProfesionalWhereInput = {
   OR?: Prisma.ProfesionalWhereInput[]
   NOT?: Prisma.ProfesionalWhereInput | Prisma.ProfesionalWhereInput[]
   id?: Prisma.IntFilter<"Profesional"> | number
-  usuarioId?: Prisma.IntFilter<"Profesional"> | number
-  ubicacionId?: Prisma.IntFilter<"Profesional"> | number
-  biografia?: Prisma.StringNullableFilter<"Profesional"> | string | null
-  foto?: Prisma.StringNullableFilter<"Profesional"> | string | null
+  usuario_id?: Prisma.IntFilter<"Profesional"> | number
+  ubicacion_id?: Prisma.IntFilter<"Profesional"> | number
+  descripcion?: Prisma.StringNullableFilter<"Profesional"> | string | null
   matricula?: Prisma.StringNullableFilter<"Profesional"> | string | null
-  verificado?: Prisma.BoolFilter<"Profesional"> | boolean
-  createdAt?: Prisma.DateTimeFilter<"Profesional"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Profesional"> | Date | string
+  activo?: Prisma.BoolFilter<"Profesional"> | boolean
+  creado_en?: Prisma.DateTimeFilter<"Profesional"> | Date | string
+  actualizado_en?: Prisma.DateTimeFilter<"Profesional"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   ubicacion?: Prisma.XOR<Prisma.UbicacionScalarRelationFilter, Prisma.UbicacionWhereInput>
   servicios?: Prisma.ServicioListRelationFilter
@@ -263,14 +255,13 @@ export type ProfesionalWhereInput = {
 
 export type ProfesionalOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  ubicacionId?: Prisma.SortOrder
-  biografia?: Prisma.SortOrderInput | Prisma.SortOrder
-  foto?: Prisma.SortOrderInput | Prisma.SortOrder
+  usuario_id?: Prisma.SortOrder
+  ubicacion_id?: Prisma.SortOrder
+  descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
   matricula?: Prisma.SortOrderInput | Prisma.SortOrder
-  verificado?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
   usuario?: Prisma.UsuarioOrderByWithRelationInput
   ubicacion?: Prisma.UbicacionOrderByWithRelationInput
   servicios?: Prisma.ServicioOrderByRelationAggregateInput
@@ -278,32 +269,30 @@ export type ProfesionalOrderByWithRelationInput = {
 
 export type ProfesionalWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  usuarioId?: number
+  usuario_id?: number
   AND?: Prisma.ProfesionalWhereInput | Prisma.ProfesionalWhereInput[]
   OR?: Prisma.ProfesionalWhereInput[]
   NOT?: Prisma.ProfesionalWhereInput | Prisma.ProfesionalWhereInput[]
-  ubicacionId?: Prisma.IntFilter<"Profesional"> | number
-  biografia?: Prisma.StringNullableFilter<"Profesional"> | string | null
-  foto?: Prisma.StringNullableFilter<"Profesional"> | string | null
+  ubicacion_id?: Prisma.IntFilter<"Profesional"> | number
+  descripcion?: Prisma.StringNullableFilter<"Profesional"> | string | null
   matricula?: Prisma.StringNullableFilter<"Profesional"> | string | null
-  verificado?: Prisma.BoolFilter<"Profesional"> | boolean
-  createdAt?: Prisma.DateTimeFilter<"Profesional"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Profesional"> | Date | string
+  activo?: Prisma.BoolFilter<"Profesional"> | boolean
+  creado_en?: Prisma.DateTimeFilter<"Profesional"> | Date | string
+  actualizado_en?: Prisma.DateTimeFilter<"Profesional"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   ubicacion?: Prisma.XOR<Prisma.UbicacionScalarRelationFilter, Prisma.UbicacionWhereInput>
   servicios?: Prisma.ServicioListRelationFilter
-}, "id" | "usuarioId">
+}, "id" | "usuario_id">
 
 export type ProfesionalOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  ubicacionId?: Prisma.SortOrder
-  biografia?: Prisma.SortOrderInput | Prisma.SortOrder
-  foto?: Prisma.SortOrderInput | Prisma.SortOrder
+  usuario_id?: Prisma.SortOrder
+  ubicacion_id?: Prisma.SortOrder
+  descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
   matricula?: Prisma.SortOrderInput | Prisma.SortOrder
-  verificado?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
   _count?: Prisma.ProfesionalCountOrderByAggregateInput
   _avg?: Prisma.ProfesionalAvgOrderByAggregateInput
   _max?: Prisma.ProfesionalMaxOrderByAggregateInput
@@ -316,23 +305,21 @@ export type ProfesionalScalarWhereWithAggregatesInput = {
   OR?: Prisma.ProfesionalScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ProfesionalScalarWhereWithAggregatesInput | Prisma.ProfesionalScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Profesional"> | number
-  usuarioId?: Prisma.IntWithAggregatesFilter<"Profesional"> | number
-  ubicacionId?: Prisma.IntWithAggregatesFilter<"Profesional"> | number
-  biografia?: Prisma.StringNullableWithAggregatesFilter<"Profesional"> | string | null
-  foto?: Prisma.StringNullableWithAggregatesFilter<"Profesional"> | string | null
+  usuario_id?: Prisma.IntWithAggregatesFilter<"Profesional"> | number
+  ubicacion_id?: Prisma.IntWithAggregatesFilter<"Profesional"> | number
+  descripcion?: Prisma.StringNullableWithAggregatesFilter<"Profesional"> | string | null
   matricula?: Prisma.StringNullableWithAggregatesFilter<"Profesional"> | string | null
-  verificado?: Prisma.BoolWithAggregatesFilter<"Profesional"> | boolean
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Profesional"> | Date | string
-  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Profesional"> | Date | string
+  activo?: Prisma.BoolWithAggregatesFilter<"Profesional"> | boolean
+  creado_en?: Prisma.DateTimeWithAggregatesFilter<"Profesional"> | Date | string
+  actualizado_en?: Prisma.DateTimeWithAggregatesFilter<"Profesional"> | Date | string
 }
 
 export type ProfesionalCreateInput = {
-  biografia?: string | null
-  foto?: string | null
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutProfesionalInput
   ubicacion: Prisma.UbicacionCreateNestedOneWithoutProfesionalesInput
   servicios?: Prisma.ServicioCreateNestedManyWithoutProfesionalInput
@@ -340,24 +327,22 @@ export type ProfesionalCreateInput = {
 
 export type ProfesionalUncheckedCreateInput = {
   id?: number
-  usuarioId: number
-  ubicacionId: number
-  biografia?: string | null
-  foto?: string | null
+  usuario_id: number
+  ubicacion_id: number
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   servicios?: Prisma.ServicioUncheckedCreateNestedManyWithoutProfesionalInput
 }
 
 export type ProfesionalUpdateInput = {
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutProfesionalNestedInput
   ubicacion?: Prisma.UbicacionUpdateOneRequiredWithoutProfesionalesNestedInput
   servicios?: Prisma.ServicioUpdateManyWithoutProfesionalNestedInput
@@ -365,48 +350,44 @@ export type ProfesionalUpdateInput = {
 
 export type ProfesionalUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  ubicacionId?: Prisma.IntFieldUpdateOperationsInput | number
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
+  ubicacion_id?: Prisma.IntFieldUpdateOperationsInput | number
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   servicios?: Prisma.ServicioUncheckedUpdateManyWithoutProfesionalNestedInput
 }
 
 export type ProfesionalCreateManyInput = {
   id?: number
-  usuarioId: number
-  ubicacionId: number
-  biografia?: string | null
-  foto?: string | null
+  usuario_id: number
+  ubicacion_id: number
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
 }
 
 export type ProfesionalUpdateManyMutationInput = {
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProfesionalUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  ubicacionId?: Prisma.IntFieldUpdateOperationsInput | number
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
+  ubicacion_id?: Prisma.IntFieldUpdateOperationsInput | number
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProfesionalListRelationFilter = {
@@ -426,50 +407,47 @@ export type ProfesionalNullableScalarRelationFilter = {
 
 export type ProfesionalCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  ubicacionId?: Prisma.SortOrder
-  biografia?: Prisma.SortOrder
-  foto?: Prisma.SortOrder
+  usuario_id?: Prisma.SortOrder
+  ubicacion_id?: Prisma.SortOrder
+  descripcion?: Prisma.SortOrder
   matricula?: Prisma.SortOrder
-  verificado?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type ProfesionalAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  ubicacionId?: Prisma.SortOrder
+  usuario_id?: Prisma.SortOrder
+  ubicacion_id?: Prisma.SortOrder
 }
 
 export type ProfesionalMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  ubicacionId?: Prisma.SortOrder
-  biografia?: Prisma.SortOrder
-  foto?: Prisma.SortOrder
+  usuario_id?: Prisma.SortOrder
+  ubicacion_id?: Prisma.SortOrder
+  descripcion?: Prisma.SortOrder
   matricula?: Prisma.SortOrder
-  verificado?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type ProfesionalMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  ubicacionId?: Prisma.SortOrder
-  biografia?: Prisma.SortOrder
-  foto?: Prisma.SortOrder
+  usuario_id?: Prisma.SortOrder
+  ubicacion_id?: Prisma.SortOrder
+  descripcion?: Prisma.SortOrder
   matricula?: Prisma.SortOrder
-  verificado?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  activo?: Prisma.SortOrder
+  creado_en?: Prisma.SortOrder
+  actualizado_en?: Prisma.SortOrder
 }
 
 export type ProfesionalSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  usuarioId?: Prisma.SortOrder
-  ubicacionId?: Prisma.SortOrder
+  usuario_id?: Prisma.SortOrder
+  ubicacion_id?: Prisma.SortOrder
 }
 
 export type ProfesionalScalarRelationFilter = {
@@ -566,25 +544,23 @@ export type ProfesionalUpdateOneRequiredWithoutServiciosNestedInput = {
 }
 
 export type ProfesionalCreateWithoutUbicacionInput = {
-  biografia?: string | null
-  foto?: string | null
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutProfesionalInput
   servicios?: Prisma.ServicioCreateNestedManyWithoutProfesionalInput
 }
 
 export type ProfesionalUncheckedCreateWithoutUbicacionInput = {
   id?: number
-  usuarioId: number
-  biografia?: string | null
-  foto?: string | null
+  usuario_id: number
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   servicios?: Prisma.ServicioUncheckedCreateNestedManyWithoutProfesionalInput
 }
 
@@ -619,36 +595,33 @@ export type ProfesionalScalarWhereInput = {
   OR?: Prisma.ProfesionalScalarWhereInput[]
   NOT?: Prisma.ProfesionalScalarWhereInput | Prisma.ProfesionalScalarWhereInput[]
   id?: Prisma.IntFilter<"Profesional"> | number
-  usuarioId?: Prisma.IntFilter<"Profesional"> | number
-  ubicacionId?: Prisma.IntFilter<"Profesional"> | number
-  biografia?: Prisma.StringNullableFilter<"Profesional"> | string | null
-  foto?: Prisma.StringNullableFilter<"Profesional"> | string | null
+  usuario_id?: Prisma.IntFilter<"Profesional"> | number
+  ubicacion_id?: Prisma.IntFilter<"Profesional"> | number
+  descripcion?: Prisma.StringNullableFilter<"Profesional"> | string | null
   matricula?: Prisma.StringNullableFilter<"Profesional"> | string | null
-  verificado?: Prisma.BoolFilter<"Profesional"> | boolean
-  createdAt?: Prisma.DateTimeFilter<"Profesional"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Profesional"> | Date | string
+  activo?: Prisma.BoolFilter<"Profesional"> | boolean
+  creado_en?: Prisma.DateTimeFilter<"Profesional"> | Date | string
+  actualizado_en?: Prisma.DateTimeFilter<"Profesional"> | Date | string
 }
 
 export type ProfesionalCreateWithoutUsuarioInput = {
-  biografia?: string | null
-  foto?: string | null
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   ubicacion: Prisma.UbicacionCreateNestedOneWithoutProfesionalesInput
   servicios?: Prisma.ServicioCreateNestedManyWithoutProfesionalInput
 }
 
 export type ProfesionalUncheckedCreateWithoutUsuarioInput = {
   id?: number
-  ubicacionId: number
-  biografia?: string | null
-  foto?: string | null
+  ubicacion_id: number
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   servicios?: Prisma.ServicioUncheckedCreateNestedManyWithoutProfesionalInput
 }
 
@@ -669,49 +642,45 @@ export type ProfesionalUpdateToOneWithWhereWithoutUsuarioInput = {
 }
 
 export type ProfesionalUpdateWithoutUsuarioInput = {
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ubicacion?: Prisma.UbicacionUpdateOneRequiredWithoutProfesionalesNestedInput
   servicios?: Prisma.ServicioUpdateManyWithoutProfesionalNestedInput
 }
 
 export type ProfesionalUncheckedUpdateWithoutUsuarioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  ubicacionId?: Prisma.IntFieldUpdateOperationsInput | number
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ubicacion_id?: Prisma.IntFieldUpdateOperationsInput | number
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   servicios?: Prisma.ServicioUncheckedUpdateManyWithoutProfesionalNestedInput
 }
 
 export type ProfesionalCreateWithoutServiciosInput = {
-  biografia?: string | null
-  foto?: string | null
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
   usuario: Prisma.UsuarioCreateNestedOneWithoutProfesionalInput
   ubicacion: Prisma.UbicacionCreateNestedOneWithoutProfesionalesInput
 }
 
 export type ProfesionalUncheckedCreateWithoutServiciosInput = {
   id?: number
-  usuarioId: number
-  ubicacionId: number
-  biografia?: string | null
-  foto?: string | null
+  usuario_id: number
+  ubicacion_id: number
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
 }
 
 export type ProfesionalCreateOrConnectWithoutServiciosInput = {
@@ -731,71 +700,65 @@ export type ProfesionalUpdateToOneWithWhereWithoutServiciosInput = {
 }
 
 export type ProfesionalUpdateWithoutServiciosInput = {
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutProfesionalNestedInput
   ubicacion?: Prisma.UbicacionUpdateOneRequiredWithoutProfesionalesNestedInput
 }
 
 export type ProfesionalUncheckedUpdateWithoutServiciosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  ubicacionId?: Prisma.IntFieldUpdateOperationsInput | number
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
+  ubicacion_id?: Prisma.IntFieldUpdateOperationsInput | number
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProfesionalCreateManyUbicacionInput = {
   id?: number
-  usuarioId: number
-  biografia?: string | null
-  foto?: string | null
+  usuario_id: number
+  descripcion?: string | null
   matricula?: string | null
-  verificado?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  activo?: boolean
+  creado_en?: Date | string
+  actualizado_en?: Date | string
 }
 
 export type ProfesionalUpdateWithoutUbicacionInput = {
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutProfesionalNestedInput
   servicios?: Prisma.ServicioUpdateManyWithoutProfesionalNestedInput
 }
 
 export type ProfesionalUncheckedUpdateWithoutUbicacionInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   servicios?: Prisma.ServicioUncheckedUpdateManyWithoutProfesionalNestedInput
 }
 
 export type ProfesionalUncheckedUpdateManyWithoutUbicacionInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
-  biografia?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   matricula?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  verificado?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  creado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  actualizado_en?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -831,14 +794,13 @@ export type ProfesionalCountOutputTypeCountServiciosArgs<ExtArgs extends runtime
 
 export type ProfesionalSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  usuarioId?: boolean
-  ubicacionId?: boolean
-  biografia?: boolean
-  foto?: boolean
+  usuario_id?: boolean
+  ubicacion_id?: boolean
+  descripcion?: boolean
   matricula?: boolean
-  verificado?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  activo?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   ubicacion?: boolean | Prisma.UbicacionDefaultArgs<ExtArgs>
   servicios?: boolean | Prisma.Profesional$serviciosArgs<ExtArgs>
@@ -847,45 +809,42 @@ export type ProfesionalSelect<ExtArgs extends runtime.Types.Extensions.InternalA
 
 export type ProfesionalSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  usuarioId?: boolean
-  ubicacionId?: boolean
-  biografia?: boolean
-  foto?: boolean
+  usuario_id?: boolean
+  ubicacion_id?: boolean
+  descripcion?: boolean
   matricula?: boolean
-  verificado?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  activo?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   ubicacion?: boolean | Prisma.UbicacionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profesional"]>
 
 export type ProfesionalSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  usuarioId?: boolean
-  ubicacionId?: boolean
-  biografia?: boolean
-  foto?: boolean
+  usuario_id?: boolean
+  ubicacion_id?: boolean
+  descripcion?: boolean
   matricula?: boolean
-  verificado?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  activo?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   ubicacion?: boolean | Prisma.UbicacionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profesional"]>
 
 export type ProfesionalSelectScalar = {
   id?: boolean
-  usuarioId?: boolean
-  ubicacionId?: boolean
-  biografia?: boolean
-  foto?: boolean
+  usuario_id?: boolean
+  ubicacion_id?: boolean
+  descripcion?: boolean
   matricula?: boolean
-  verificado?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  activo?: boolean
+  creado_en?: boolean
+  actualizado_en?: boolean
 }
 
-export type ProfesionalOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "usuarioId" | "ubicacionId" | "biografia" | "foto" | "matricula" | "verificado" | "createdAt" | "updatedAt", ExtArgs["result"]["profesional"]>
+export type ProfesionalOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "usuario_id" | "ubicacion_id" | "descripcion" | "matricula" | "activo" | "creado_en" | "actualizado_en", ExtArgs["result"]["profesional"]>
 export type ProfesionalInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   ubicacion?: boolean | Prisma.UbicacionDefaultArgs<ExtArgs>
@@ -910,14 +869,13 @@ export type $ProfesionalPayload<ExtArgs extends runtime.Types.Extensions.Interna
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    usuarioId: number
-    ubicacionId: number
-    biografia: string | null
-    foto: string | null
+    usuario_id: number
+    ubicacion_id: number
+    descripcion: string | null
     matricula: string | null
-    verificado: boolean
-    createdAt: Date
-    updatedAt: Date
+    activo: boolean
+    creado_en: Date
+    actualizado_en: Date
   }, ExtArgs["result"]["profesional"]>
   composites: {}
 }
@@ -1345,14 +1303,13 @@ export interface Prisma__ProfesionalClient<T, Null = never, ExtArgs extends runt
  */
 export interface ProfesionalFieldRefs {
   readonly id: Prisma.FieldRef<"Profesional", 'Int'>
-  readonly usuarioId: Prisma.FieldRef<"Profesional", 'Int'>
-  readonly ubicacionId: Prisma.FieldRef<"Profesional", 'Int'>
-  readonly biografia: Prisma.FieldRef<"Profesional", 'String'>
-  readonly foto: Prisma.FieldRef<"Profesional", 'String'>
+  readonly usuario_id: Prisma.FieldRef<"Profesional", 'Int'>
+  readonly ubicacion_id: Prisma.FieldRef<"Profesional", 'Int'>
+  readonly descripcion: Prisma.FieldRef<"Profesional", 'String'>
   readonly matricula: Prisma.FieldRef<"Profesional", 'String'>
-  readonly verificado: Prisma.FieldRef<"Profesional", 'Boolean'>
-  readonly createdAt: Prisma.FieldRef<"Profesional", 'DateTime'>
-  readonly updatedAt: Prisma.FieldRef<"Profesional", 'DateTime'>
+  readonly activo: Prisma.FieldRef<"Profesional", 'Boolean'>
+  readonly creado_en: Prisma.FieldRef<"Profesional", 'DateTime'>
+  readonly actualizado_en: Prisma.FieldRef<"Profesional", 'DateTime'>
 }
     
 
