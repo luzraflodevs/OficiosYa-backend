@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { CreateServicioDto } from './dto/create-servicio.dto.js';
 import { UpdateServicioDto } from './dto/update-servicio.dto.js';
@@ -8,15 +13,33 @@ export class ServiciosService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createServicioDto: CreateServicioDto) {
+    if (createServicioDto.activo === false) {
+      throw new BadRequestException(
+        'Un servicio nuevo debe estar activo.',
+      );
+    }
+
     await this.validarProfesional(createServicioDto.profesional_id);
     await this.validarOficio(createServicioDto.oficio_id);
 
-    return this.prisma.servicio.create({ data: createServicioDto });
+    return this.prisma.servicio.create({
+      data: {
+        ...createServicioDto,
+        activo: true,
+      },
+    });
   }
 
   findAll() {
     return this.prisma.servicio.findMany({
-      where: { activo: true },
+      where: {
+        activo: true,
+        profesional: {
+          activo: true,
+          usuario: { activo: true },
+        },
+        oficio: { activo: true },
+      },
       orderBy: { id: 'asc' },
       include: { oficio: true },
     });
@@ -24,13 +47,25 @@ export class ServiciosService {
 
   async findOne(id: number) {
     const servicio = await this.prisma.servicio.findUnique({
-      where: { id, activo: true },
+      where: {
+        id,
+        activo: true,
+        profesional: {
+          activo: true,
+          usuario: { activo: true },
+        },
+        oficio: { activo: true },
+      },
       include: {
         oficio: true,
         profesional: {
           include: {
             usuario: {
-              select: { nombre: true, apellido: true, telefono: true },
+              select: {
+                nombre: true,
+                apellido: true,
+                telefono: true,
+              },
             },
             ubicacion: true,
           },
@@ -40,42 +75,72 @@ export class ServiciosService {
     });
 
     if (!servicio) {
-      throw new NotFoundException(`No existe un servicio con id ${id}.`);
+      throw new NotFoundException(
+        `No existe un servicio con id ${id}.`,
+      );
     }
 
     return servicio;
   }
 
-  async update(id: number, updateServicioDto: UpdateServicioDto) {
-    if (updateServicioDto.activo === true) {
+  async obtenerPropietario(profesionalId: number) {
+    const profesional = await this.prisma.profesional.findUnique({
+      where: { id: profesionalId, activo: true },
+      select: {
+        id: true,
+        usuario_id: true,
+      },
+    });
+
+    if (!profesional) {
+      throw new NotFoundException(
+        `No existe un profesional activo con id ${profesionalId}.`,
+      );
+    }
+
+    return profesional;
+  }
+
+  async update(id: number, dto: UpdateServicioDto) {
+    const { profesional_id, activo, ...datos } = dto;
+
+    if (profesional_id !== undefined) {
+      throw new BadRequestException(
+        'No se puede cambiar el propietario de un servicio.',
+      );
+    }
+
+    if (activo === true) {
       const existe = await this.prisma.servicio.findUnique({
         where: { id },
         select: { id: true },
       });
+
       if (!existe) {
-        throw new NotFoundException(`No existe un servicio con id ${id}.`);
+        throw new NotFoundException(
+          `No existe un servicio con id ${id}.`,
+        );
       }
     } else {
       await this.findOne(id);
     }
 
-    if (updateServicioDto.profesional_id) {
-      await this.validarProfesional(updateServicioDto.profesional_id);
-    }
-    if (updateServicioDto.oficio_id) {
-      await this.validarOficio(updateServicioDto.oficio_id);
+    if (datos.oficio_id !== undefined) {
+      await this.validarOficio(datos.oficio_id);
     }
 
     return this.prisma.servicio.update({
       where: { id },
-      data: updateServicioDto,
+      data: {
+        ...datos,
+        ...(activo !== undefined ? { activo } : {}),
+      },
     });
   }
 
   async remove(id: number) {
     await this.findOne(id);
 
-    // Borrado lógico: no se borra la fila, se marca como inactiva.
     return this.prisma.servicio.update({
       where: { id },
       data: { activo: false },
@@ -84,12 +149,17 @@ export class ServiciosService {
 
   private async validarProfesional(profesionalId: number) {
     const profesional = await this.prisma.profesional.findUnique({
-      where: { id: profesionalId, activo: true },
+      where: {
+        id: profesionalId,
+        activo: true,
+        usuario: { activo: true },
+      },
       select: { id: true },
     });
+
     if (!profesional) {
       throw new NotFoundException(
-        `No existe un profesional con id ${profesionalId}.`,
+        `No existe un profesional activo con id ${profesionalId}.`,
       );
     }
   }
@@ -99,8 +169,11 @@ export class ServiciosService {
       where: { id: oficioId, activo: true },
       select: { id: true },
     });
+
     if (!oficio) {
-      throw new NotFoundException(`No existe un oficio con id ${oficioId}.`);
+      throw new NotFoundException(
+        `No existe un oficio activo con id ${oficioId}.`,
+      );
     }
   }
 }
