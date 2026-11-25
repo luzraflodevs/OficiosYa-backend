@@ -1,8 +1,19 @@
-import { IsOptional, IsString, MaxLength } from 'class-validator';
+import {
+  IsBoolean,
+  IsInt,
+  IsOptional,
+  IsString,
+  MaxLength,
+  Min,
+} from 'class-validator';
 
 export class CreateProfesionaleDto {
-  // Claves foráneas: se escriben en la clase, pero no se validan con decoradores.
+  @IsInt({ message: 'El id de usuario debe ser un número entero.' })
+  @Min(1, { message: 'El id de usuario debe ser mayor a 0.' })
   usuario_id: number;
+
+  @IsInt({ message: 'El id de ubicación debe ser un número entero.' })
+  @Min(1, { message: 'El id de ubicación debe ser mayor a 0.' })
   ubicacion_id: number;
 
   @IsOptional()
@@ -18,4 +29,10 @@ export class CreateProfesionaleDto {
     message: 'La matrícula no puede superar los 50 caracteres.',
   })
   matricula?: string;
+
+  @IsOptional()
+  @IsBoolean({
+    message: 'El estado activo debe ser verdadero o falso (true o false).',
+  })
+  activo?: boolean;
 }
