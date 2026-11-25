@@ -38,7 +38,17 @@ export class OficiosService {
   }
 
   async update(id: number, updateOficioDto: UpdateOficioDto) {
-    await this.findOne(id);
+    if (updateOficioDto.activo === true) {
+      const existe = await this.prisma.oficio.findUnique({
+        where: { id },
+        select: { id: true },
+      });
+      if (!existe) {
+        throw new NotFoundException(`No existe un oficio con id ${id}.`);
+      }
+    } else {
+      await this.findOne(id);
+    }
 
     if (updateOficioDto.nombre) {
       await this.validarNombre(updateOficioDto.nombre, id);

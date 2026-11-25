@@ -42,7 +42,17 @@ export class ResenasService {
   }
 
   async update(id: number, updateResenaDto: UpdateResenaDto) {
-    await this.findOne(id);
+    if (updateResenaDto.activo === true) {
+      const existe = await this.prisma.resena.findUnique({
+        where: { id },
+        select: { id: true },
+      });
+      if (!existe) {
+        throw new NotFoundException(`No existe una reseña con id ${id}.`);
+      }
+    } else {
+      await this.findOne(id);
+    }
 
     if (updateResenaDto.servicio_id) {
       await this.validarServicio(updateResenaDto.servicio_id);
