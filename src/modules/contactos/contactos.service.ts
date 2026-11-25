@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaService } from '../../prisma/prisma.service.js';
+import { PrismaService } from '../prisma/prisma.service.js';
 import { CreateContactoDto } from './dto/create-contacto.dto.js';
 import { UpdateContactoDto } from './dto/update-contacto.dto.js';
 
@@ -8,29 +8,31 @@ export class ContactosService {
   constructor(private readonly prisma: PrismaService) {}
 
   create(createContactoDto: CreateContactoDto) {
-    return this.prisma.contacto.create({
-      data: createContactoDto,
-    });
+    return this.prisma.contacto.create({ data: createContactoDto });
   }
 
   findAll() {
     return this.prisma.contacto.findMany({
+      where: { activo: true },
       orderBy: { id: 'asc' },
     });
   }
 
   async findOne(id: number) {
     const contacto = await this.prisma.contacto.findUnique({
-      where: { id },
+      where: { id, activo: true },
     });
+
     if (!contacto) {
-      throw new NotFoundException(`No se encontró el contacto con id ${id}`);
+      throw new NotFoundException(`No existe un contacto con id ${id}.`);
     }
+
     return contacto;
   }
 
   async update(id: number, updateContactoDto: UpdateContactoDto) {
     await this.findOne(id);
+
     return this.prisma.contacto.update({
       where: { id },
       data: updateContactoDto,
@@ -39,8 +41,11 @@ export class ContactosService {
 
   async remove(id: number) {
     await this.findOne(id);
-    return this.prisma.contacto.delete({
+
+    // Borrado lógico: no se borra la fila, se marca como inactiva.
+    return this.prisma.contacto.update({
       where: { id },
+      data: { activo: false },
     });
   }
 }

@@ -89,12 +89,13 @@ export const UsuarioScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
   apellido: 'apellido',
-  correo: 'correo',
-  contrasena_hash: 'contrasena_hash',
+  email: 'email',
+  passwordHash: 'passwordHash',
   telefono: 'telefono',
   rol: 'rol',
-  fecha_creacion: 'fecha_creacion',
-  fecha_actualizacion: 'fecha_actualizacion'
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
@@ -102,13 +103,14 @@ export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeo
 
 export const ProfesionalScalarFieldEnum = {
   id: 'id',
-  usuario_id: 'usuario_id',
-  ubicacion_id: 'ubicacion_id',
+  usuarioId: 'usuarioId',
+  ubicacionId: 'ubicacionId',
   biografia: 'biografia',
+  foto: 'foto',
   matricula: 'matricula',
   verificado: 'verificado',
-  fecha_creacion: 'fecha_creacion',
-  fecha_actualizacion: 'fecha_actualizacion'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ProfesionalScalarFieldEnum = (typeof ProfesionalScalarFieldEnum)[keyof typeof ProfesionalScalarFieldEnum]
@@ -118,8 +120,10 @@ export const OficioScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
   descripcion: 'descripcion',
-  fecha_creacion: 'fecha_creacion',
-  fecha_actualizacion: 'fecha_actualizacion'
+  imagen: 'imagen',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type OficioScalarFieldEnum = (typeof OficioScalarFieldEnum)[keyof typeof OficioScalarFieldEnum]
@@ -127,13 +131,14 @@ export type OficioScalarFieldEnum = (typeof OficioScalarFieldEnum)[keyof typeof 
 
 export const ServicioScalarFieldEnum = {
   id: 'id',
-  profesional_id: 'profesional_id',
-  oficio_id: 'oficio_id',
+  profesionalId: 'profesionalId',
+  oficioId: 'oficioId',
   titulo: 'titulo',
   descripcion: 'descripcion',
-  precio_estimado: 'precio_estimado',
-  fecha_creacion: 'fecha_creacion',
-  fecha_actualizacion: 'fecha_actualizacion'
+  precioEstimado: 'precioEstimado',
+  disponible: 'disponible',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ServicioScalarFieldEnum = (typeof ServicioScalarFieldEnum)[keyof typeof ServicioScalarFieldEnum]
@@ -141,12 +146,12 @@ export type ServicioScalarFieldEnum = (typeof ServicioScalarFieldEnum)[keyof typ
 
 export const ResenaScalarFieldEnum = {
   id: 'id',
-  usuario_id: 'usuario_id',
-  servicio_id: 'servicio_id',
+  usuarioId: 'usuarioId',
+  servicioId: 'servicioId',
   calificacion: 'calificacion',
   comentario: 'comentario',
-  fecha_creacion: 'fecha_creacion',
-  fecha_actualizacion: 'fecha_actualizacion'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ResenaScalarFieldEnum = (typeof ResenaScalarFieldEnum)[keyof typeof ResenaScalarFieldEnum]
@@ -155,9 +160,10 @@ export type ResenaScalarFieldEnum = (typeof ResenaScalarFieldEnum)[keyof typeof 
 export const ContactoScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
-  correo: 'correo',
+  email: 'email',
   detalle: 'detalle',
-  fecha_creacion: 'fecha_creacion'
+  leido: 'leido',
+  createdAt: 'createdAt'
 } as const
 
 export type ContactoScalarFieldEnum = (typeof ContactoScalarFieldEnum)[keyof typeof ContactoScalarFieldEnum]

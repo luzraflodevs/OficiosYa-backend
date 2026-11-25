@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { ProfesionalesService } from './profesionales.service.js';
 import { CreateProfesionaleDto } from './dto/create-profesionale.dto.js';
 import { UpdateProfesionaleDto } from './dto/update-profesionale.dto.js';
@@ -18,17 +27,20 @@ export class ProfesionalesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.profesionalesService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.profesionalesService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProfesionaleDto: UpdateProfesionaleDto) {
-    return this.profesionalesService.update(+id, updateProfesionaleDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateProfesionaleDto: UpdateProfesionaleDto,
+  ) {
+    return this.profesionalesService.update(id, updateProfesionaleDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.profesionalesService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.profesionalesService.remove(id);
   }
 }

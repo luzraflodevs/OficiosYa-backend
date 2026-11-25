@@ -212,13 +212,14 @@ export type UbicacionOrderByWithRelationInput = {
 
 export type UbicacionWhereUniqueInput = Prisma.AtLeast<{
   id?: number
+  ciudad_provincia?: Prisma.UbicacionCiudadProvinciaCompoundUniqueInput
   AND?: Prisma.UbicacionWhereInput | Prisma.UbicacionWhereInput[]
   OR?: Prisma.UbicacionWhereInput[]
   NOT?: Prisma.UbicacionWhereInput | Prisma.UbicacionWhereInput[]
   ciudad?: Prisma.StringFilter<"Ubicacion"> | string
   provincia?: Prisma.StringFilter<"Ubicacion"> | string
   profesionales?: Prisma.ProfesionalListRelationFilter
-}, "id">
+}, "id" | "ciudad_provincia">
 
 export type UbicacionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -281,6 +282,11 @@ export type UbicacionUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   ciudad?: Prisma.StringFieldUpdateOperationsInput | string
   provincia?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type UbicacionCiudadProvinciaCompoundUniqueInput = {
+  ciudad: string
+  provincia: string
 }
 
 export type UbicacionCountOrderByAggregateInput = {

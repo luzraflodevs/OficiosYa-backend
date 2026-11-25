@@ -1,29 +1,21 @@
-import {
-  IsBoolean,
-  IsInt,
-  IsOptional,
-  IsPositive,
-  IsString,
-} from 'class-validator';
+import { IsOptional, IsString, MaxLength } from 'class-validator';
 
 export class CreateProfesionaleDto {
-  @IsInt({ message: 'El usuario_id debe ser un número entero' })
-  @IsPositive({ message: 'El usuario_id debe ser positivo' })
+  // Claves foráneas: se escriben en la clase, pero no se validan con decoradores.
   usuario_id: number;
-
-  @IsInt({ message: 'El ubicacion_id debe ser un número entero' })
-  @IsPositive({ message: 'El ubicacion_id debe ser positivo' })
   ubicacion_id: number;
 
   @IsOptional()
-  @IsString({ message: 'La biografía debe ser texto' })
-  biografia?: string;
+  @IsString({ message: 'La descripción debe ser un texto.' })
+  @MaxLength(1000, {
+    message: 'La descripción no puede superar los 1000 caracteres.',
+  })
+  descripcion?: string;
 
   @IsOptional()
-  @IsString({ message: 'La matrícula debe ser texto' })
+  @IsString({ message: 'La matrícula debe ser un texto.' })
+  @MaxLength(50, {
+    message: 'La matrícula no puede superar los 50 caracteres.',
+  })
   matricula?: string;
-
-  @IsOptional()
-  @IsBoolean({ message: 'El campo verificado debe ser verdadero o falso' })
-  verificado?: boolean;
 }
