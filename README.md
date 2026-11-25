@@ -1,109 +1,128 @@
 # OficiosYa — Backend API
 
-API RESTful desarrollada con **NestJS**, **Prisma ORM** y **PostgreSQL** para la plataforma **OficiosYa**, destinada a conectar usuarios que requieren servicios técnicos o del hogar con profesionales verificados por rubro y ubicación.
+API REST desarrollada con **NestJS**, **TypeScript**, **Prisma ORM** y **PostgreSQL** para la plataforma de gestión y contratación de servicios de oficios **OficiosYa**.
 
-## Equipo de Desarrollo
+---
 
-* **González Raflo, Luz Priscila**
-* **Monetti, Camila**
-* **Moschino Molina, Tobías**
+## Tecnologías Utilizadas
 
-## Stack Tecnológico
+* **Framework:** NestJS (Node.js + TypeScript)
+* **ORM y Base de Datos:** Prisma ORM 7 + PostgreSQL
+* **Autenticación y Seguridad:** JWT (`@nestjs/jwt`) + Encriptación de contraseñas (`bcrypt`)
+* **Validación de Datos:** `class-validator` y `class-transformer` (DTOs)
+* **Pruebas de API:** Colección de Postman (`postman/collections/OficiosYa-backend.postman_collection.json`)
 
-* **Framework:** NestJS (TypeScript)
-* **Base de Datos:** PostgreSQL
-* **ORM y Migraciones:** Prisma ORM
-* **Validación de Datos:** `class-validator` y `class-transformer`
-* **Pruebas de Endpoints:** Postman
+---
 
-## Arquitectura y Módulos del Sistema
+## Arquitectura del Proyecto
 
-El proyecto sigue una arquitectura modular por dominio, estandarizada al 100% en español tanto en el código fuente como en el esquema relacional de la base de datos:
+El proyecto sigue una arquitectura modular organizada en `src/modules/`:
 
 ```text
 OficiosYa-backend/
+├── postman/
+│   └── collections/
+│       └── OficiosYa-backend.postman_collection.json
 ├── prisma/
-│   ├── migrations/        # Historial de migraciones SQL
-│   └── schema.prisma      # Modelado relacional de las 7 entidades
+│   ├── migrations/
+│   ├── datos-iniciales.sql
+│   └── schema.prisma
 ├── src/
+│   ├── generated/
 │   ├── modules/
-│   │   ├── auth/          # Registro y gestión de credenciales
-│   │   ├── contactos/     # Consultas y mensajes de contacto
-│   │   ├── oficios/       # Catálogo de rubros y especialidades
-│   │   ├── profesionales/ # Perfiles de trabajadores y matrículas
-│   │   ├── resenas/       # Calificaciones y comentarios sobre servicios
-│   │   ├── servicios/     # Publicaciones de servicios ofrecidos
-│   │   └── usuarios/      # Gestión de clientes, profesionales y administradores
-│   ├── prisma/            # PrismaService y PrismaModule globales
-│   └── main.ts            # Punto de entrada y configuración de ValidationPipe
-└── .env.example           # Plantilla de variables de entorno
+│   │   ├── app/
+│   │   ├── auth/
+│   │   ├── contactos/
+│   │   ├── oficios/
+│   │   ├── prisma/
+│   │   ├── profesionales/
+│   │   ├── resenas/
+│   │   ├── servicios/
+│   │   └── usuarios/
+│   └── main.ts
+├── .env.example
+├── package.json
+├── prisma.config.ts
+└── tsconfig.json
 ```
 
-### Entidades del Modelo de Datos
+### Descripción de Módulos
+* **`auth`**: Registro e inicio de sesión de usuarios con encriptación de contraseñas (`bcrypt`) y generación de tokens JWT.
+* **`prisma`**: Módulo y servicio global de conexión a PostgreSQL mediante Prisma ORM.
+* **`usuarios`**: Gestión de usuarios de la plataforma (clientes y profesionales) con validaciones DTO y borrado lógico.
+* **`profesionales`**: Administración de perfiles profesionales, matrícula, descripción y estado activo.
+* **`oficios`**: Catálogo de rubros y especialidades disponibles en la plataforma.
+* **`servicios`**: Publicación y gestión de servicios ofrecidos por los profesionales.
+* **`resenas`**: Calificaciones y comentarios de clientes sobre servicios contratados.
+* **`contactos`**: Solicitudes de contacto y presupuestos entre clientes y profesionales.
 
-1. **`ubicaciones`**: Localidades, provincias y códigos postales de cobertura.
-2. **`usuarios`**: Cuentas registradas en la plataforma con roles (`CLIENTE`, `PROFESIONAL`, `ADMIN`).
-3. **`profesionales`**: Información extendida del prestador (descripción, matrícula, disponibilidad y ubicación).
-4. **`oficios`**: Categorías de oficios disponibles (ej. Electricidad, Plomería, Gasista, Carpintería).
-5. **`servicios`**: Servicios publicados por cada profesional asociados a un oficio y tarifa.
-6. **`resenas`**: Valoraciones (1 a 5) y comentarios realizados por usuarios sobre servicios contratados.
-7. **`contactos`**: Mensajes enviados a través del formulario de contacto de la plataforma.
-
-## Requisitos Previos
-
-* **Node.js** (v18 o superior)
-* **npm**
-* **PostgreSQL** (v14 o superior) en ejecución local
+---
 
 ## Instalación y Configuración Local
 
-1. **Clonar el repositorio:**
-   ```bash
-   git clone [https://github.com/luzraflodevs/OficiosYa-backend.git](https://github.com/luzraflodevs/OficiosYa-backend.git)
-   cd OficiosYa-backend
-   ```
+### 1. Clonar el repositorio e instalar dependencias
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd OficiosYa-backend
+npm install
+```
 
-2. **Instalar dependencias:**
-   ```bash
-   npm install
-   ```
+### 2. Configurar variables de entorno
+Crear un archivo `.env` en la raíz del proyecto tomando como plantilla `.env.example`:
+```bash
+cp .env.example .env
+```
+Completar las variables requeridas en `.env`:
+```env
+DATABASE_URL="postgresql://usuario:password@localhost:5432/oficiosya?schema=public"
+JWT_SECRET="tu_clave_secreta_jwt"
+PORT=3000
+```
 
-3. **Configurar variables de entorno:**
-   Crear un archivo `.env` en la raíz del proyecto con los datos de conexión a tu instancia local de PostgreSQL:
-   ```env
-   DATABASE_URL="postgresql://USUARIO:CONTRASENA@localhost:5432/oficiosya_db?schema=public"
-   PORT=4000
-   ```
+### 3. Generar el cliente de Prisma y aplicar migraciones
+```bash
+npx prisma generate
+npx prisma migrate deploy
+```
 
-4. **Ejecutar migraciones y generar el cliente Prisma:**
-   ```bash
-   npx prisma migrate dev
-   npx prisma generate
-   ```
+### 4. Cargar datos iniciales de prueba (Seed SQL)
+Ejecutar el script `prisma/datos-iniciales.sql` desde pgAdmin o mediante `psql` para poblar las tablas con usuarios, oficios, profesionales, servicios, reseñas y contactos de prueba.
 
-5. **Levantar el servidor en modo desarrollo:**
-   ```bash
-   npm run start:dev
-   ```
-   El servidor quedará disponible en `http://localhost:4000`.
+### 5. Levantar el servidor
+```bash
+# Modo desarrollo
+npm run start:dev
+
+# Compilación y producción
+npm run build
+npm run start:prod
+```
+
+---
 
 ## Endpoints Principales
 
-Todos los recursos cuentan con validación automática mediante DTOs (`ValidationPipe` global) y operaciones CRUD completas:
+| Módulo | Método | Endpoint | Descripción |
+| :--- | :--- | :--- | :--- |
+| **Auth** | `POST` | `/auth/register` | Registrar un nuevo usuario en la plataforma |
+| **Auth** | `POST` | `/auth/login` | Iniciar sesión con correo y contraseña |
+| **Usuarios** | `GET` / `POST` / `PATCH` / `DELETE` | `/usuarios` | CRUD de usuarios con borrado lógico |
+| **Profesionales** | `GET` / `POST` / `PATCH` / `DELETE` | `/profesionales` | CRUD de perfiles profesionales |
+| **Oficios** | `GET` / `POST` / `PATCH` / `DELETE` | `/oficios` | CRUD de categorías de oficios |
+| **Servicios** | `GET` / `POST` / `PATCH` / `DELETE` | `/servicios` | CRUD de servicios publicados |
+| **Reseñas** | `GET` / `POST` / `PATCH` / `DELETE` | `/resenas` | CRUD de valoraciones y comentarios |
+| **Contactos** | `GET` / `POST` / `PATCH` / `DELETE` | `/contactos` | CRUD de solicitudes de contacto |
 
-| Recurso | Base URL | Métodos Soportados |
-| :--- | :--- | :--- |
-| **Autenticación** | `/auth` | `GET`, `POST`, `PATCH`, `DELETE` |
-| **Usuarios** | `/usuarios` | `GET`, `POST`, `PATCH`, `DELETE` |
-| **Profesionales** | `/profesionales` | `GET`, `POST`, `PATCH`, `DELETE` |
-| **Oficios** | `/oficios` | `GET`, `POST`, `PATCH`, `DELETE` |
-| **Servicios** | `/servicios` | `GET`, `POST`, `PATCH`, `DELETE` |
-| **Reseñas** | `/resenas` | `GET`, `POST`, `PATCH`, `DELETE` |
-| **Contactos** | `/contactos` | `GET`, `POST`, `PATCH`, `DELETE` |
+---
 
-## Flujo de Trabajo Git
+## Pruebas con Postman
 
-* **`main`**: Rama principal de producción / entregas consolidadas.
-* **`dev`**: Rama de integración donde se mergean las funcionalidades y documentación aprobadas.
-* **`feature/*`**: Ramas destinadas al desarrollo de nuevos módulos, base de datos o funcionalidades.
-* **`docs/*`**: Ramas destinadas exclusivamente a la documentación del proyecto.
+Importar el archivo `postman/collections/OficiosYa-backend.postman_collection.json` en Postman para probar todos los endpoints documentados, incluyendo el flujo completo de registro, login con JWT y operaciones CRUD.
+
+---
+
+## Equipo de Desarrollo
+
+* **Luz Priscila González Raflo**
+* **Tobias Moschino Molina**
+* **Camila Monetti**
