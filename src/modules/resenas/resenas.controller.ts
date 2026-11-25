@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { ResenasService } from './resenas.service.js';
 import { CreateResenaDto } from './dto/create-resena.dto.js';
 import { UpdateResenaDto } from './dto/update-resena.dto.js';
@@ -18,17 +27,20 @@ export class ResenasController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.resenasService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.resenasService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateResenaDto: UpdateResenaDto) {
-    return this.resenasService.update(+id, updateResenaDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateResenaDto: UpdateResenaDto,
+  ) {
+    return this.resenasService.update(id, updateResenaDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.resenasService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.resenasService.remove(id);
   }
 }

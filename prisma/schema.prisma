@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum RolUsuario {
+  CLIENTE
+  PROFESIONAL
+  ADMIN
+}
+
+model Ubicacion {
+  id            Int           @id @default(autoincrement())
+  ciudad        String        @db.VarChar(100)
+  provincia     String        @db.VarChar(100)
+  profesionales Profesional[]
+
+  @@unique([ciudad, provincia])
+  @@map("ubicaciones")
+}
+
+model Usuario {
+  id           Int          @id @default(autoincrement())
+  nombre       String       @db.VarChar(80)
+  apellido     String       @db.VarChar(80)
+  email        String       @unique @db.VarChar(150)
+  passwordHash String       @map("password_hash")
+  telefono     String?      @db.VarChar(30)
+  rol          RolUsuario   @default(CLIENTE)
+  activo       Boolean      @default(true)
+  createdAt    DateTime     @default(now()) @map("created_at")
+  updatedAt    DateTime     @updatedAt @map("updated_at")
+
+  profesional  Profesional?
+  resenas      Resena[]
+
+  @@map("usuarios")
+}
+
+model Profesional {
+  id          Int        @id @default(autoincrement())
+  usuarioId   Int        @unique @map("usuario_id")
+  ubicacionId Int        @map("ubicacion_id")
+  biografia   String?    @db.VarChar(1000)
+  foto        String?
+  matricula   String?    @db.VarChar(50)
+  verificado  Boolean    @default(false)
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  ubicacion   Ubicacion  @relation(fields: [ubicacionId], references: [id])
+  servicios   Servicio[]
+
+  @@map("profesionales")
+}
+
+model Oficio {
+  id          Int        @id @default(autoincrement())
+  nombre      String     @unique @db.VarChar(120)
+  descripcion String     @db.VarChar(1000)
+  imagen      String?
+  activo      Boolean    @default(true)
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  servicios   Servicio[]
+
+  @@map("oficios")
+}
+
+model Servicio {
+  id             Int         @id @default(autoincrement())
+  profesionalId  Int         @map("profesional_id")
+  oficioId       Int         @map("oficio_id")
+  titulo         String      @db.VarChar(150)
+  descripcion    String      @db.VarChar(2000)
+  precioEstimado Decimal?    @map("precio_estimado") @db.Decimal(10, 2)
+  disponible     Boolean     @default(true)
+  createdAt      DateTime    @default(now()) @map("created_at")
+  updatedAt      DateTime    @updatedAt @map("updated_at")
+
+  profesional    Profesional @relation(fields: [profesionalId], references: [id], onDelete: Cascade)
+  oficio         Oficio      @relation(fields: [oficioId], references: [id])
+  resenas        Resena[]
+
+  @@map("servicios")
+}
+
+model Resena {
+  id           Int      @id @default(autoincrement())
+  usuarioId    Int      @map("usuario_id")
+  servicioId   Int      @map("servicio_id")
+  calificacion Int
+  comentario   String?  @db.VarChar(1000)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  usuario      Usuario  @relation(fields: [usuarioId], references: [id])
+  servicio     Servicio @relation(fields: [servicioId], references: [id], onDelete: Cascade)
+
+  @@map("resenas")
+}
+
+model Contacto {
+  id        Int      @id @default(autoincrement())
+  nombre    String   @db.VarChar(120)
+  email     String   @db.VarChar(150)
+  detalle   String   @db.VarChar(3000)
+  leido     Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("contactos")
+}

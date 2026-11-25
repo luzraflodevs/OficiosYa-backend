@@ -1,26 +1,85 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUsuarioDto } from './dto/create-usuario.dto.js';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service.js';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto.js';
+
+// Campos que se devuelven del usuario. contrasena_hash NO está:
+// la contraseña nunca sale en las respuestas.
+const camposUsuario = {
+  id: true,
+  nombre: true,
+  apellido: true,
+  email: true,
+  telefono: true,
+  rol: true,
+  activo: true,
+  creado_en: true,
+  actualizado_en: true,
+};
 
 @Injectable()
 export class UsuariosService {
-  create(createUsuarioDto: CreateUsuarioDto) {
-    return 'This action adds a new usuario';
-  }
+  constructor(private readonly prisma: PrismaService) {}
 
   findAll() {
-    return `This action returns all usuarios`;
+    return this.prisma.usuario.findMany({
+      where: { activo: true },
+      orderBy: { id: 'asc' },
+      select: camposUsuario,
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} usuario`;
+  async findOne(id: number) {
+    const usuario = await this.prisma.usuario.findUnique({
+      where: { id, activo: true },
+      select: camposUsuario,
+    });
+
+    if (!usuario) {
+      throw new NotFoundException(`No existe un usuario con id ${id}.`);
+    }
+
+    return usuario;
   }
 
-  update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
-    return `This action updates a #${id} usuario`;
+  async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
+    await this.findOne(id);
+
+    if (updateUsuarioDto.email) {
+      await this.validarEmail(updateUsuarioDto.email, id);
+    }
+
+    return this.prisma.usuario.update({
+      where: { id },
+      data: updateUsuarioDto,
+      select: camposUsuario,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} usuario`;
+  async remove(id: number) {
+    await this.findOne(id);
+
+    // Borrado lógico: no se borra la fila, se marca como inactiva.
+    return this.prisma.usuario.update({
+      where: { id },
+      data: { activo: false },
+      select: camposUsuario,
+    });
+  }
+
+  private async validarEmail(email: string, usuarioId: number) {
+    const existente = await this.prisma.usuario.findUnique({
+      where: { email },
+      select: { id: true },
+    });
+
+    if (existente && existente.id !== usuarioId) {
+      throw new ConflictException(
+        'Ya existe una cuenta con ese correo electrónico.',
+      );
+    }
   }
 }
