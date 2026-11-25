@@ -51,7 +51,17 @@ export class ProfesionalesService {
   }
 
   async update(id: number, updateProfesionaleDto: UpdateProfesionaleDto) {
-    await this.findOne(id);
+    if (updateProfesionaleDto.activo === true) {
+      const existe = await this.prisma.profesional.findUnique({
+        where: { id },
+        select: { id: true },
+      });
+      if (!existe) {
+        throw new NotFoundException(`No existe un profesional con id ${id}.`);
+      }
+    } else {
+      await this.findOne(id);
+    }
 
     if (updateProfesionaleDto.usuario_id) {
       await this.validarUsuario(updateProfesionaleDto.usuario_id, id);

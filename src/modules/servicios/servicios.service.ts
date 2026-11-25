@@ -47,7 +47,17 @@ export class ServiciosService {
   }
 
   async update(id: number, updateServicioDto: UpdateServicioDto) {
-    await this.findOne(id);
+    if (updateServicioDto.activo === true) {
+      const existe = await this.prisma.servicio.findUnique({
+        where: { id },
+        select: { id: true },
+      });
+      if (!existe) {
+        throw new NotFoundException(`No existe un servicio con id ${id}.`);
+      }
+    } else {
+      await this.findOne(id);
+    }
 
     if (updateServicioDto.profesional_id) {
       await this.validarProfesional(updateServicioDto.profesional_id);

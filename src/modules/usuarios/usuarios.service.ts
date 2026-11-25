@@ -46,7 +46,17 @@ export class UsuariosService {
   }
 
   async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
-    await this.findOne(id);
+    if (updateUsuarioDto.activo === true) {
+      const existe = await this.prisma.usuario.findUnique({
+        where: { id },
+        select: { id: true },
+      });
+      if (!existe) {
+        throw new NotFoundException(`No existe un usuario con id ${id}.`);
+      }
+    } else {
+      await this.findOne(id);
+    }
 
     if (updateUsuarioDto.email) {
       await this.validarEmail(updateUsuarioDto.email, id);

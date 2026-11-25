@@ -1,6 +1,9 @@
 import {
+  IsBoolean,
+  IsInt,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
   MaxLength,
   Min,
@@ -8,8 +11,12 @@ import {
 } from 'class-validator';
 
 export class CreateServicioDto {
-  // Claves foráneas: se escriben en la clase, pero no se validan con decoradores.
+  @IsInt({ message: 'El id del profesional debe ser un número entero.' })
+  @Min(1, { message: 'El id del profesional debe ser mayor a 0.' })
   profesional_id: number;
+
+  @IsInt({ message: 'El id del oficio debe ser un número entero.' })
+  @Min(1, { message: 'El id del oficio debe ser mayor a 0.' })
   oficio_id: number;
 
   @IsString({ message: 'El título debe ser un texto.' })
@@ -34,4 +41,10 @@ export class CreateServicioDto {
   )
   @Min(0, { message: 'El precio no puede ser negativo.' })
   precio: number;
+
+  @IsOptional()
+  @IsBoolean({
+    message: 'El estado activo debe ser verdadero o falso (true o false).',
+  })
+  activo?: boolean;
 }

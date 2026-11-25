@@ -31,7 +31,17 @@ export class ContactosService {
   }
 
   async update(id: number, updateContactoDto: UpdateContactoDto) {
-    await this.findOne(id);
+    if (updateContactoDto.activo === true) {
+      const existe = await this.prisma.contacto.findUnique({
+        where: { id },
+        select: { id: true },
+      });
+      if (!existe) {
+        throw new NotFoundException(`No existe un contacto con id ${id}.`);
+      }
+    } else {
+      await this.findOne(id);
+    }
 
     return this.prisma.contacto.update({
       where: { id },
