@@ -1,3 +1,4 @@
+
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { CreateContactoDto } from './dto/create-contacto.dto.js';
@@ -7,8 +8,17 @@ import { UpdateContactoDto } from './dto/update-contacto.dto.js';
 export class ContactosService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(createContactoDto: CreateContactoDto) {
-    return this.prisma.contacto.create({ data: createContactoDto });
+  create(dto: CreateContactoDto) {
+    return this.prisma.contacto.create({
+      data: {
+        nombre: dto.nombre,
+        email: dto.email,
+        asunto: dto.asunto,
+        mensaje: dto.mensaje,
+        activo: true,
+        leido: false,
+      },
+    });
   }
 
   findAll() {
@@ -24,20 +34,25 @@ export class ContactosService {
     });
 
     if (!contacto) {
-      throw new NotFoundException(`No existe un contacto con id ${id}.`);
+      throw new NotFoundException(
+        `No existe un contacto con id ${id}.`,
+      );
     }
 
     return contacto;
   }
 
-  async update(id: number, updateContactoDto: UpdateContactoDto) {
-    if (updateContactoDto.activo === true) {
+  async update(id: number, dto: UpdateContactoDto) {
+    if (dto.activo === true) {
       const existe = await this.prisma.contacto.findUnique({
         where: { id },
         select: { id: true },
       });
+
       if (!existe) {
-        throw new NotFoundException(`No existe un contacto con id ${id}.`);
+        throw new NotFoundException(
+          `No existe un contacto con id ${id}.`,
+        );
       }
     } else {
       await this.findOne(id);
@@ -45,14 +60,13 @@ export class ContactosService {
 
     return this.prisma.contacto.update({
       where: { id },
-      data: updateContactoDto,
+      data: dto,
     });
   }
 
   async remove(id: number) {
     await this.findOne(id);
 
-    // Borrado lógico: no se borra la fila, se marca como inactiva.
     return this.prisma.contacto.update({
       where: { id },
       data: { activo: false },
